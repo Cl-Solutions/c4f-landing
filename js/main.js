@@ -39,22 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // RECHNER — slider & manual input sync
-  const slider    = document.getElementById('rSlider');
-  const manual    = document.getElementById('rManual');
-  const sliderVal = document.getElementById('sliderVal');
-  if (slider && manual && sliderVal) {
-    slider.addEventListener('input', () => {
-      sliderVal.textContent = Number(slider.value).toLocaleString('de-DE') + ' m²';
-      manual.value = slider.value;
-    });
-    manual.addEventListener('input', () => {
-      const v = Math.min(parseInt(manual.value) || 1, 5000);
-      slider.value = v;
-      sliderVal.textContent = v.toLocaleString('de-DE') + ' m²';
-    });
-  }
-
   // RECHNER — calculate
   document.getElementById('rBtn')?.addEventListener('click', berechnen);
 
@@ -72,7 +56,7 @@ const TYPEN = {
 };
 
 function berechnen() {
-  const fl    = parseInt(document.getElementById('rSlider').value) || 100;
+  const fl    = parseInt(document.getElementById('rManual').value) || 100;
   const typ   = document.getElementById('rTyp').value;
   const boden = parseFloat(document.getElementById('rBoden').value);
   const t     = TYPEN[typ];
@@ -80,7 +64,7 @@ function berechnen() {
   const preis = (liter * t.preis).toFixed(2).replace('.', ',');
 
   document.getElementById('resLiter').textContent = liter.toLocaleString('de-DE') + ' L';
-  document.getElementById('resPreis').textContent = '€ ' + preis;
+  document.getElementById('resPreis').textContent = '€ ' + preis;
   document.getElementById('resProd').textContent  = t.prod;
 
   const r = document.getElementById('rResult');

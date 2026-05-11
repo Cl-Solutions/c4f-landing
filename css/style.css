@@ -25,6 +25,10 @@
   --radius-lg:  20px;
 
   --nav-h: 68px;
+
+  /* Animation easing */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── RESET ───────────────────────────────────────────────── */
@@ -1321,4 +1325,128 @@ ul { list-style: none; }
   .produktion-facts { grid-template-columns: 1fr 1fr; }
   .zg-tabs { gap: .35rem; }
   .zg-tab { font-size: .8rem; padding: .5rem 1rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS & MICRO-INTERACTIONS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── CARD CASCADE (scale-up reveal) ─────────────────────── */
+.prod-card.reveal,
+.bundle-card.reveal,
+.pb-card.reveal {
+  transform: translateY(28px) scale(0.96);
+  transition: opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo);
+}
+.prod-card.reveal.is-visible,
+.bundle-card.reveal.is-visible,
+.pb-card.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ─── PREMIUM CARD HOVER ──────────────────────────────────── */
+.prod-card {
+  transition: transform .32s var(--ease-out-quart), box-shadow .32s var(--ease-out-quart);
+}
+.prod-card:hover {
+  transform: translateY(-6px) perspective(600px) rotateX(1.5deg);
+  box-shadow: 0 24px 60px rgba(22,17,10,.16), 0 4px 16px rgba(22,17,10,.09);
+}
+
+/* ─── BUTTON FEEDBACK ─────────────────────────────────────── */
+.btn-primary,
+.btn-ghost,
+.btn-outline-light,
+.form-btn {
+  transition-property: background, border-color, transform, box-shadow, opacity;
+  transition-duration: .18s;
+  transition-timing-function: var(--ease-out-quart);
+}
+.btn-primary:active,
+.btn-ghost:active,
+.btn-outline-light:active,
+.form-btn:active {
+  transform: scale(0.96) !important;
+}
+
+/* ─── MARQUEE ─────────────────────────────────────────────── */
+.partners-ticker {
+  overflow: hidden;
+  flex: 1;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: .5rem .75rem;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+.partners-track span {
+  font-size: .8rem;
+  font-weight: 500;
+  color: rgba(245,237,218,.55);
+  padding: .25rem .75rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── TAB PANEL SLIDE-IN ──────────────────────────────────── */
+.zg-panel--entering {
+  animation: panelSlideIn .38s var(--ease-out-expo) both;
+}
+@keyframes panelSlideIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── FORM FIELD SHAKE ────────────────────────────────────── */
+@keyframes fieldShake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-7px); }
+  35%       { transform: translateX(6px); }
+  55%       { transform: translateX(-4px); }
+  75%       { transform: translateX(3px); }
+}
+.field-shake {
+  animation: fieldShake .4s var(--ease-out-quart);
+}
+
+/* ─── COUNTER NUMBER STYLE ────────────────────────────────── */
+.hstat-n,
+.pb-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── SCROLL PROGRESS BAR ─────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--forest), var(--leaf));
+  z-index: 10001;
+  pointer-events: none;
+  transition: width .1s linear;
+}
+
+/* ─── REDUCED MOTION ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .partners-track { animation: none; }
+  .zg-panel--entering { animation: none; }
+  .prod-card:hover,
+  .bundle-card:hover { transform: translateY(-2px); }
+  .btn-primary:active,
+  .btn-ghost:active,
+  .btn-outline-light:active,
+  .form-btn:active { transform: none !important; }
 }

@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Carbon4Future – Nachhaltige Bodenverbesserung mit aktivierter Pflanzenkohle. Torffrei, bioaktiv, 100% organisch. Für Gärten, Grünflächen und Landwirtschaft.">
-  <meta property="og:title" content="Carbon4Future – Klimaschutz beginnt im Boden">
-  <meta property="og:description" content="Nachhaltige Bodenverbesserung mit aktivierter Pflanzenkohle. Torffrei, bioaktiv, 100% organisch.">
+  <meta name="description" content="Carbon4Future – Aktivierte Pflanzenkohle für gesunde Böden. 1 kg bindet 2,5 kg CO₂. Torffrei, bioaktiv, 100% organisch. Made in Germany.">
+  <meta property="og:title" content="Carbon4Future – Die Kraft der Pflanzenkohle">
+  <meta property="og:description" content="Premiumlösungen für gesunde Pflanzen, lebendige Böden und nachhaltiges Wachstum. Ohne Chemie. Ohne Torf.">
   <meta property="og:type" content="website">
-  <title>Carbon4Future – Klimaschutz beginnt im Boden</title>
+  <title>Carbon4Future – Die Kraft der Pflanzenkohle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/images/hero-bg-0.jpg">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- GRAIN OVERLAY -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- SKIP LINK -->
   <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
   <!-- NAV -->
-  <nav aria-label="Hauptnavigation">
-    <div class="nav-logo-wrap">
+  <nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-logo">
       <img src="assets/images/img-10.png" alt="Carbon4Future" class="nav-logo-img">
     </div>
     <div class="nav-pill">
-      <a href="#caps" class="nav-link">Vorteile</a>
-      <a href="#produkte" class="nav-link">Sortiment</a>
-      <a href="#rechner" class="nav-link">Rechner</a>
-      <a href="#kontakt" class="nav-btn">Kontakt ↗</a>
+      <a href="#pflanzenkohle" class="nav-link">Pflanzenkohle</a>
+      <a href="#produkte" class="nav-link">Produkte</a>
+      <a href="#zielgruppen" class="nav-link">Zielgruppen</a>
+      <a href="#bundles" class="nav-link">Bundles</a>
+      <a href="#kontakt" class="nav-cta">Kontakt ↗</a>
     </div>
     <button class="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -35,299 +40,605 @@
 
   <!-- MOBILE MENU -->
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-    <a href="#caps" class="mobile-link">Vorteile</a>
-    <a href="#produkte" class="mobile-link">Sortiment</a>
-    <a href="#rechner" class="mobile-link">Rechner</a>
-    <a href="#kontakt" class="mobile-link mobile-link--cta">Kontakt ↗</a>
+    <a href="#pflanzenkohle" class="mob-link">Pflanzenkohle</a>
+    <a href="#produkte" class="mob-link">Produkte</a>
+    <a href="#zielgruppen" class="mob-link">Zielgruppen</a>
+    <a href="#bundles" class="mob-link">Bundles</a>
+    <a href="#kontakt" class="mob-link mob-link--cta">Kontakt ↗</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero" id="main">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-vignette" aria-hidden="true"></div>
-    <div class="hero-bottom-fade" aria-hidden="true"></div>
+  <!-- ═══════════════════════════════════════════ HERO ═══ -->
+  <section class="hero" id="main" aria-label="Einleitung">
+    <div class="hero-img" aria-hidden="true" style="background-image:url('assets/images/roots-compare.png')"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <div class="badge">
-        <span class="badge-chip">Neu</span>
-        <span class="badge-text">Klimaschutz durch Pflanzenkohle, Made in Germany</span>
+      <p class="hero-kicker reveal">Carbon4Future · Made in Germany</p>
+      <h1 class="hero-h1 reveal reveal-d1">Die Kraft der<br><em>Pflanzenkohle.</em></h1>
+      <p class="hero-sub reveal reveal-d2">Premiumlösungen für gesunde Pflanzen, lebendige Böden<br>und nachhaltiges Wachstum. Ganz ohne Chemie und Torf.</p>
+
+      <div class="hero-stats reveal reveal-d3">
+        <div class="hstat">
+          <div class="hstat-n">5 L</div>
+          <div class="hstat-l">Wasser gespeichert<br>je kg Pflanzenkohle</div>
+        </div>
+        <div class="hstat-div" aria-hidden="true"></div>
+        <div class="hstat">
+          <div class="hstat-n">2,5 kg</div>
+          <div class="hstat-l">CO₂ dauerhaft<br>gebunden je kg Kohle</div>
+        </div>
+        <div class="hstat-div" aria-hidden="true"></div>
+        <div class="hstat">
+          <div class="hstat-n">20%</div>
+          <div class="hstat-l">aktivierte Pflanzenkohle<br>in unseren Produkten</div>
+        </div>
       </div>
 
-      <h1 class="hero-h1">Klimaschutz beginnt<br><em>im Boden.</em></h1>
-
-      <p class="hero-sub">Nachhaltige Bodenverbesserung mit aktivierter Pflanzenkohle. Torffrei, bioaktiv, 100% organisch. Für Gärten, Grünflächen und Landwirtschaft.</p>
-
-      <div class="hero-btns">
-        <a href="#produkte" class="btn-glass">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
-          Produkte entdecken ↗
-        </a>
-        <a href="#rechner" class="btn-outline">Bedarf berechnen →</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
-          </div>
-          <div class="stat-num">5×</div>
-          <div class="stat-label">mehr Wasserspeicherung im Boden</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="stat-num">CO₂</div>
-          <div class="stat-label">dauerhaft im Boden gebunden</div>
-        </div>
+      <div class="hero-btns reveal reveal-d4">
+        <a href="#produkte" class="btn-primary">Produkte entdecken</a>
+        <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen ↗</a>
       </div>
     </div>
 
-    <div class="partners">
-      <div class="partners-chip">Geeignet für alle Zielgruppen</div>
-      <div class="partners-row" aria-label="Zielgruppen">
-        <span>GaLaBau</span><span>Kommunen</span><span>Golf</span><span>Gärtnereien</span><span>Raiffeisen</span>
+    <div class="hero-partners">
+      <div class="partners-label">Geeignet für</div>
+      <div class="partners-row">
+        <span>GaLaBau</span>
+        <span>Kommunen</span>
+        <span>Golf</span>
+        <span>Gärtnereien</span>
+        <span>Raiffeisen</span>
+        <span>Hobbygärtner</span>
       </div>
     </div>
   </section>
 
-  <!-- CAPABILITIES -->
-  <section class="caps" id="caps">
-    <div class="caps-inner">
-      <div class="caps-left">
-        <p class="caps-kicker reveal">// Warum C4F</p>
-        <h2 class="caps-h2 reveal reveal-d1">Natürlich.<br>Wirksam.<br>Nachhaltig.</h2>
+  <!-- ═══════════════════════════════════ PROBLEM ═══ -->
+  <section class="problem" aria-label="Das Problem">
+    <div class="problem-inner">
+      <div class="problem-text">
+        <p class="section-kicker reveal">// Das Problem</p>
+        <h2 class="section-h2 reveal reveal-d1">Kennen Sie das?</h2>
+        <ul class="problem-list">
+          <li class="reveal reveal-d1"><span class="prob-x">✗</span><span>Pflanzen wachsen schwach oder ungleichmäßig</span></li>
+          <li class="reveal reveal-d2"><span class="prob-x">✗</span><span>Erde trocknet schnell aus oder wird hart</span></li>
+          <li class="reveal reveal-d3"><span class="prob-x">✗</span><span>Dünger wirkt nur kurzfristig, wird ausgewaschen</span></li>
+          <li class="reveal reveal-d4"><span class="prob-x">✗</span><span>Pflegeaufwand und Bewässerungskosten steigen stetig</span></li>
+        </ul>
+        <p class="problem-conclusion reveal reveal-d4">Das Problem ist meist nicht die Pflanze –<br><strong>sondern der Boden.</strong></p>
       </div>
-      <div class="caps-cards">
-        <div class="cap-card reveal reveal-d1">
-          <div class="cap-card-top">
-            <div class="cap-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
-            </div>
-            <div class="cap-tags">
-              <span class="cap-tag">Torffrei</span>
-              <span class="cap-tag">Bioaktiv</span>
-              <span class="cap-tag">Wasserspeicher</span>
-              <span class="cap-tag">CO₂-Bindung</span>
-            </div>
-          </div>
-          <div class="cap-spacer"></div>
-          <h3 class="cap-title">Pflanzenkohle</h3>
-          <p class="cap-body">Aktivierte Pflanzenkohle verbessert die Bodenstruktur dauerhaft. Mehr Wasserspeicherung, mehr Nährstoffe, sichtbar gesündere Pflanzen.</p>
+      <div class="problem-img reveal reveal-d2">
+        <img src="assets/images/soil-compare.png" alt="Trockener Boden links, fruchtbarer grüner Boden rechts – der Unterschied mit Pflanzenkohle" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ PFLANZENKOHLE ═══ -->
+  <section class="pkohle" id="pflanzenkohle" aria-label="Pflanzenkohle">
+    <div class="pkohle-inner">
+      <div class="pkohle-head">
+        <p class="section-kicker section-kicker--light reveal">// Die Lösung</p>
+        <h2 class="section-h2 section-h2--light reveal reveal-d1">Pflanzenkohle –<br>der Super-Rohstoff.</h2>
+        <p class="pkohle-intro reveal reveal-d2">Aktivierte Pflanzenkohle ist ein zukunftsweisender Rohstoff. Unsere Garten-Aktivprodukte vereinen die Kraft natürlicher Inhaltsstoffe mit moderner Bodenpflege – für Böden, die dauerhaft funktionieren.</p>
+      </div>
+
+      <div class="pkohle-benefits">
+        <div class="pb-card reveal">
+          <div class="pb-num">5 L</div>
+          <div class="pb-title">Wasserspeicher</div>
+          <div class="pb-desc">1 kg Pflanzenkohle speichert bis zu 5 Liter Wasser. Ideal in Trockenperioden – weniger Gießen, mehr Wirkung.</div>
         </div>
-        <div class="cap-card reveal reveal-d2">
-          <div class="cap-card-top">
-            <div class="cap-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-            </div>
-            <div class="cap-tags">
-              <span class="cap-tag">Made in DE</span>
-              <span class="cap-tag">Plastikfrei</span>
-              <span class="cap-tag">Organisch</span>
-            </div>
-          </div>
-          <div class="cap-spacer"></div>
-          <h3 class="cap-title">Sortiment</h3>
-          <p class="cap-body">Spezialisierte Produkte für jeden Einsatzbereich. Hergestellt in Deutschland, plastikfrei verpackt, ohne chemische Zusätze.</p>
+        <div class="pb-card reveal reveal-d1">
+          <div class="pb-num">2,5 kg</div>
+          <div class="pb-title">CO₂-Bindung</div>
+          <div class="pb-desc">1 kg aktivierte Pflanzenkohle bindet dauerhaft 2,5 kg CO₂ im Boden. Messbarer Klimabeitrag für Ihr Unternehmen.</div>
         </div>
-        <div class="cap-card reveal reveal-d3">
-          <div class="cap-card-top">
-            <div class="cap-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="cap-tags">
-              <span class="cap-tag">Klimaschutz</span>
-              <span class="cap-tag">ESG-konform</span>
-              <span class="cap-tag">Zertifiziert</span>
-            </div>
-          </div>
-          <div class="cap-spacer"></div>
-          <h3 class="cap-title">Klimawirkung</h3>
-          <p class="cap-body">Jedes Kilogramm Pflanzenkohle bindet dauerhaft CO₂ im Boden. Messbarer Klimabeitrag für Unternehmen und Kommunen.</p>
+        <div class="pb-card reveal reveal-d2">
+          <div class="pb-num">∞</div>
+          <div class="pb-title">Langzeitwirkung</div>
+          <div class="pb-desc">Anhaftende Nährstoffe im wurzelnahen Bereich. Langzeitversorgung statt kurzfristiger Boosts, die ausgewaschen werden.</div>
+        </div>
+        <div class="pb-card reveal reveal-d3">
+          <div class="pb-num">100%</div>
+          <div class="pb-title">Organisch &amp; Torffrei</div>
+          <div class="pb-desc">Effektive Mikroorganismen, organische Pflanzenbestandteile, pflanzliche Kompostsroffe. Keinerlei chemische Zusätze.</div>
+        </div>
+      </div>
+
+      <div class="pkohle-visual reveal reveal-d2">
+        <img src="assets/images/plants-compare.png" alt="Pflanzen ohne vs. mit Pflanzenkohle – sichtbarer Unterschied bei Wachstum und Wurzeln" loading="lazy">
+        <div class="pkohle-visual-cap">
+          <span>Karger Boden</span>
+          <span class="pkohle-vs">vs.</span>
+          <span>Nährstoffreicher Pflanzenkohle-Boden</span>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
+  <!-- ═══════════════════════════════ PRODUKTE ═══ -->
+  <section class="produkte" id="produkte" aria-label="Produktsortiment">
+    <div class="produkte-inner">
+      <div class="produkte-head">
+        <p class="section-kicker reveal">// Unser Sortiment</p>
+        <h2 class="section-h2 reveal reveal-d1">9 Produkte.<br><em>Ein System.</em></h2>
+        <p class="produkte-sub reveal reveal-d2">Spezialisierte Lösungen für jeden Einsatzbereich – hergestellt in Deutschland, plastikfrei verpackt, ohne chemische Zusätze.</p>
+      </div>
 
-  <!-- PRODUKTE -->
-  <section class="produkte" id="produkte">
-    <div class="section-header">
-      <p class="section-kicker reveal">// Unser Sortiment</p>
-      <h2 class="section-h2 section-h2--flush reveal reveal-d1">Für jeden Standort. <em class="text-gruen">Das richtige Substrat.</em></h2>
-    </div>
-    <div class="prod-grid">
-      <div class="prod-card reveal">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
-        </div>
-        <div class="prod-tag">TOP-SELLER</div>
-        <div class="prod-name">Hochbeet aktiv</div>
-        <div class="prod-desc">Schnelle Nährstofffreisetzung für üppiges Wachstum</div>
-      </div>
-      <div class="prod-card reveal reveal-d1">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M8 12a4 4 0 0 1 8 0M6 9a3 3 0 0 1 6 0M12 9a3 3 0 0 1 6 0"/></svg>
-        </div>
-        <div class="prod-tag">BESTSELLER</div>
-        <div class="prod-name">Gemüsegarten aktiv</div>
-        <div class="prod-desc">Ausgewogene Versorgung für gesunde Ernte</div>
-      </div>
-      <div class="prod-card reveal reveal-d2">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        </div>
-        <div class="prod-tag">URBAN</div>
-        <div class="prod-name">Balkon aktiv</div>
-        <div class="prod-desc">Kompakt und geruchsarm für Töpfe und Kästen</div>
-      </div>
-      <div class="prod-card reveal reveal-d3">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div class="prod-tag">GAMECHANGER</div>
-        <div class="prod-name">Terra preta</div>
-        <div class="prod-desc">Dauerhafter Humusaufbau und CO₂-Bindung</div>
-      </div>
-      <div class="prod-card reveal reveal-d1">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7H6a3 3 0 0 0 0 6h3v1a3 3 0 0 0 6 0v-1h3a3 3 0 0 0 0-6h-3V5a3 3 0 0 0-3-3z"/></svg>
-        </div>
-        <div class="prod-tag">INTENSIV</div>
-        <div class="prod-name">Starkdünger</div>
-        <div class="prod-desc">Schnelle Wirkung bei hoher Belastung</div>
-      </div>
-      <div class="prod-card reveal reveal-d2">
-        <div class="prod-emoji" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7M12 15l-4-4h8l-4 4zM8 11l-3-3h14l-3 3M5 8l-2-2h18l-2 2"/></svg>
-        </div>
-        <div class="prod-tag">URBAN</div>
-        <div class="prod-name">Baumringe</div>
-        <div class="prod-desc">Gezielter Wasserspeicher im Wurzelbereich</div>
+      <div class="prod-grid">
+
+        <article class="prod-card reveal">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-hochbeet.png" alt="Hochbeet aktiv – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--top">TOP-SELLER</div>
+            <h3 class="prod-name">Hochbeet aktiv</h3>
+            <p class="prod-desc">Schnelle Nährstofffreisetzung für üppiges Wachstum. Ideal für Starkzehrer wie Tomaten und Zucchini.</p>
+            <div class="prod-tags"><span>Torffrei</span><span>Bioaktiv</span><span>Wasserspeicher</span></div>
+            <div class="prod-size">Empfohlen: <strong>10 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d1">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-gemuese.png" alt="Gemüsegarten aktiv – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--green">BESTSELLER</div>
+            <h3 class="prod-name">Gemüsegarten aktiv</h3>
+            <p class="prod-desc">Ausgewogene Grundversorgung für gesunde Ernte. Kombiniert Bodenverbesserung und Nährstoffversorgung.</p>
+            <div class="prod-tags"><span>Torffrei</span><span>Humusaufbau</span><span>Nährstoffspeicher</span></div>
+            <div class="prod-size">Empfohlen: <strong>10 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d2">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-balkon.png" alt="Balkon aktiv – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--earth">URBAN</div>
+            <h3 class="prod-name">Balkon aktiv</h3>
+            <p class="prod-desc">Kompakt und geruchsarm für Töpfe und Balkonkästen. Die komplette Lösung für kleine Flächen.</p>
+            <div class="prod-tags"><span>Geruchsarm</span><span>Kompakt</span><span>Topfgeeignet</span></div>
+            <div class="prod-size">Empfohlen: <strong>5 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d1">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-gartenerde.png" alt="Gartenerde – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--earth">BASIS</div>
+            <h3 class="prod-name">Gartenerde</h3>
+            <p class="prod-desc">Hochwertige Trägererde für alle Gartenanwendungen. Schnelle Nährstoffversorgung mit langfristiger Wirkung.</p>
+            <div class="prod-tags"><span>Torffrei</span><span>Nährstoffreich</span><span>Universell</span></div>
+            <div class="prod-size">Empfohlen: <strong>20 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d2">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-terrapreta.png" alt="Terra Preta Konzentrat – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--top">GAMECHANGER</div>
+            <h3 class="prod-name">Terra Preta Konzentrat</h3>
+            <p class="prod-desc">Konzentrat für Bio-Schwarzerde mit aktivierter Pflanzenkohle. Dauerhafter Humusaufbau, CO₂-Bindung, aktives Bodenleben.</p>
+            <div class="prod-tags"><span>Mikroorganismen</span><span>CO₂-Bindung</span><span>Humusaufbau</span></div>
+            <div class="prod-size">Empfohlen: <strong>2 L</strong> (hoher Wirkungsgrad)</div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d3">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-duenger.png" alt="Dünger stark – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--green">INTENSIV</div>
+            <h3 class="prod-name">Dünger stark</h3>
+            <p class="prod-desc">Schnelle Wirkung bei hoher Belastung. Für Hochbeete und Starkzehrer – sorgt für höhere Erträge und schnelleres Wachstum.</p>
+            <div class="prod-tags"><span>Sofortwirkung</span><span>Ertragssteigerung</span><span>Organisch</span></div>
+            <div class="prod-size">Empfohlen: <strong>2 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d1">
+          <div class="prod-img-wrap">
+            <img src="assets/images/prod-baumring.png" alt="Baumring aktiv – Carbon4Future" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--earth">PROFIS</div>
+            <h3 class="prod-name">Baumringe</h3>
+            <p class="prod-desc">Gezielter Wasserspeicher im Wurzelbereich. Tiefenwirksame Nährstoffversorgung für Bäume und Sträucher.</p>
+            <div class="prod-tags"><span>Wurzelversorgung</span><span>Langzeitwirkung</span><span>Wasserspeicher</span></div>
+            <div class="prod-size">Empfohlen: <strong>10 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d2">
+          <div class="prod-img-wrap prod-img-wrap--coal">
+            <div class="prod-img-placeholder" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
+            </div>
+            <div class="prod-img-label">Bio Pflanzenkohle</div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--coal">ROHSTOFF</div>
+            <h3 class="prod-name">Pflanzenkohle</h3>
+            <p class="prod-desc">100% natürlich und rein. Hohe Porosität und Oberfläche. Zuschlagstoff und Grundlage aller C4F Systeme.</p>
+            <div class="prod-tags"><span>100% natürlich</span><span>Hohe Porosität</span><span>Zuschlagstoff</span></div>
+            <div class="prod-size">Empfohlen: <strong>5 L</strong></div>
+          </div>
+        </article>
+
+        <article class="prod-card reveal reveal-d3">
+          <div class="prod-img-wrap prod-img-wrap--leaf">
+            <div class="prod-img-placeholder" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7H6a3 3 0 0 0 0 6h3v1a3 3 0 0 0 6 0v-1h3a3 3 0 0 0 0-6h-3V5a3 3 0 0 0-3-3z"/></svg>
+            </div>
+            <div class="prod-img-label">Brennnesselsud</div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-badge prod-badge--green">FLÜSSIG</div>
+            <h3 class="prod-name">Brennnesselsud Konzentrat</h3>
+            <p class="prod-desc">Sofort verfügbarer Stickstoff und Kalium. Lädt Pflanzenkohle auf – Nährstoffbindung für sofortige + Langzeitwirkung.</p>
+            <div class="prod-tags"><span>Sofortwirkung</span><span>Stickstoff</span><span>Kalium</span></div>
+            <div class="prod-size">Empfohlen: <strong>2 L</strong> Konzentrat</div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
+  <!-- ═══════════════════════════ ZIELGRUPPEN ═══ -->
+  <section class="zielgruppen" id="zielgruppen" aria-label="Zielgruppen">
+    <div class="zg-inner">
+      <p class="section-kicker section-kicker--light reveal">// Für wen ist C4F?</p>
+      <h2 class="section-h2 section-h2--light reveal reveal-d1">Ihr Problem.<br>Unsere Lösung.</h2>
 
-  <!-- RECHNER -->
-  <section class="rechner" id="rechner">
-    <div class="rechner-inner">
-      <div class="rechner-head reveal">
-        <p class="section-kicker">// Bedarfsrechner</p>
-        <h2 class="rechner-h2">Wieviel brauche <em class="text-gruen">ich?</em></h2>
-        <p class="rechner-sub">Fläche eingeben, Bedarf sofort berechnen.</p>
+      <div class="zg-tabs" role="tablist" aria-label="Zielgruppen auswählen">
+        <button class="zg-tab zg-tab--active" role="tab" aria-selected="true" aria-controls="zg-hobbygaertner" id="tab-hobbygaertner" data-tab="hobbygaertner">Hobbygärtner</button>
+        <button class="zg-tab" role="tab" aria-selected="false" aria-controls="zg-galabau" id="tab-galabau" data-tab="galabau">GaLaBau / Projektierer</button>
+        <button class="zg-tab" role="tab" aria-selected="false" aria-controls="zg-golf" id="tab-golf" data-tab="golf">Golf / Kommunen</button>
+        <button class="zg-tab" role="tab" aria-selected="false" aria-controls="zg-haendler" id="tab-haendler" data-tab="haendler">Händler</button>
       </div>
 
-      <div class="rechner-card reveal reveal-d1">
-        <div class="r-grid">
-          <div>
-            <label class="r-label" for="rTyp">Flächentyp</label>
-            <select class="r-select" id="rTyp">
-              <option value="hochbeet">Hochbeet</option>
-              <option value="gemuese">Gemüsegarten</option>
-              <option value="rasen">Rasen</option>
-              <option value="balkon">Balkon</option>
-              <option value="park">Park / Grünfläche</option>
-              <option value="golf">Golfplatz</option>
-              <option value="baum">Baumscheibe</option>
-            </select>
+      <div class="zg-panel zg-panel--active" id="zg-hobbygaertner" role="tabpanel" aria-labelledby="tab-hobbygaertner">
+        <div class="zg-cols">
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--prob">Das Problem</h3>
+            <ul class="zg-list">
+              <li><span class="zg-x">✗</span>Boden trocknet schnell aus</li>
+              <li><span class="zg-x">✗</span>Dünger muss ständig nachgegeben werden</li>
+              <li><span class="zg-x">✗</span>Schwaches Pflanzenwachstum trotz Aufwand</li>
+              <li><span class="zg-x">✗</span>Hoher Gieß- und Pflegeaufwand</li>
+            </ul>
           </div>
-          <div>
-            <label class="r-label" for="rBoden">Bodenzustand</label>
-            <select class="r-select" id="rBoden">
-              <option value="1.0">Normal</option>
-              <option value="1.4">Ausgelaugt / Verdichtet</option>
-              <option value="1.2">Sandig / Trocken</option>
-              <option value="0.8">Gut / Humusreich</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="r-manual-wrap">
-          <label class="r-label" for="rManual">Flächengröße</label>
-          <div class="input-wrap">
-            <input type="number" placeholder="z.B. 500" class="r-input" id="rManual" min="1" max="5000">
-            <span class="input-suffix">m²</span>
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--sol">Die Lösung</h3>
+            <ul class="zg-list">
+              <li><span class="zg-check">✓</span>Bessere Wasserspeicherung im Boden</li>
+              <li><span class="zg-check">✓</span>Langzeitversorgung statt kurzfristiger Dünger</li>
+              <li><span class="zg-check">✓</span>Sichtbar stärkeres Pflanzenwachstum</li>
+              <li><span class="zg-check">✓</span>Weniger Gießen, weniger Pflegen</li>
+            </ul>
+            <div class="zg-cta">
+              <div class="zg-prod-label">Empfohlene Produkte:</div>
+              <div class="zg-prods"><span>Hochbeet aktiv</span><span>Gemüse aktiv</span><span>Balkon aktiv</span><span>Terra Preta</span></div>
+              <a href="#kontakt" class="btn-outline-light">Testfläche starten →</a>
+            </div>
           </div>
         </div>
+      </div>
 
-        <button class="r-btn" id="rBtn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c0-6.5-4-10-8-10 2 0 8 .5 8-6 0 4 4 7 8 7-2 0-8 1-8 9z"/></svg>
-          Bedarf berechnen
+      <div class="zg-panel" id="zg-galabau" role="tabpanel" aria-labelledby="tab-galabau" hidden>
+        <div class="zg-cols">
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--prob">Das Problem</h3>
+            <ul class="zg-list">
+              <li><span class="zg-x">✗</span>Hohe Pflegekosten durch häufige Bewässerung</li>
+              <li><span class="zg-x">✗</span>Verdichtete Böden, schlechte Durchwurzelung</li>
+              <li><span class="zg-x">✗</span>Hohe Ausfallraten bei Neupflanzungen</li>
+              <li><span class="zg-x">✗</span>Wachsender Druck zu nachhaltigen Lösungen</li>
+            </ul>
+          </div>
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--sol">Die Lösung</h3>
+            <ul class="zg-list">
+              <li><span class="zg-check">✓</span>Nachhaltige Bodenverbesserung für Grünflächen</li>
+              <li><span class="zg-check">✓</span>Bessere Durchwurzelung durch lockere Struktur</li>
+              <li><span class="zg-check">✓</span>Weniger Ausfälle, höhere Anwachsraten</li>
+              <li><span class="zg-check">✓</span>ESG-konform und nachweisbar nachhaltig</li>
+            </ul>
+            <div class="zg-cta">
+              <div class="zg-prod-label">Empfohlene Produkte:</div>
+              <div class="zg-prods"><span>Baumringe</span><span>Terra Preta</span><span>Pflanzenkohle</span><span>Dünger stark</span></div>
+              <a href="#kontakt" class="btn-outline-light">Pilotprojekt anfragen →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="zg-panel" id="zg-golf" role="tabpanel" aria-labelledby="tab-golf" hidden>
+        <div class="zg-cols">
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--prob">Das Problem</h3>
+            <ul class="zg-list">
+              <li><span class="zg-x">✗</span>Böden verlieren Qualität und Tragfähigkeit</li>
+              <li><span class="zg-x">✗</span>Weniger Wasseraufnahme, steigende Kosten</li>
+              <li><span class="zg-x">✗</span>Mehr Bewässerung, mehr Dünger, höhere Kosten</li>
+              <li><span class="zg-x">✗</span>Schlechtere Pflanzenqualität und -stabilität</li>
+            </ul>
+          </div>
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--sol">Die Lösung</h3>
+            <ul class="zg-list">
+              <li><span class="zg-check">✓</span>Optimale Wasserspeicherung durch Pflanzenkohle</li>
+              <li><span class="zg-check">✓</span>Stabilere Pflanzen, langanhaltende Bodenfeuchte</li>
+              <li><span class="zg-check">✓</span>Weniger Pflegeaufwand, messbare Einsparungen</li>
+              <li><span class="zg-check">✓</span>Nachweisbarer CO₂-Beitrag für Klimaziele</li>
+            </ul>
+            <div class="zg-cta">
+              <div class="zg-prod-label">Empfohlene Produkte:</div>
+              <div class="zg-prods"><span>Terra Preta</span><span>Dünger stark</span><span>Baumringe</span><span>Pflanzenkohle</span></div>
+              <a href="#kontakt" class="btn-outline-light">Testfläche festlegen →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="zg-panel" id="zg-haendler" role="tabpanel" aria-labelledby="tab-haendler" hidden>
+        <div class="zg-cols">
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--prob">Das Problem</h3>
+            <ul class="zg-list">
+              <li><span class="zg-x">✗</span>Kunden fragen nach nachhaltigen Alternativen</li>
+              <li><span class="zg-x">✗</span>Trend zu Bio und Torffrei nimmt stark zu</li>
+              <li><span class="zg-x">✗</span>Standarddünger ohne klare Differenzierung</li>
+              <li><span class="zg-x">✗</span>Keine System-Lösungen im Sortiment</li>
+            </ul>
+          </div>
+          <div class="zg-col">
+            <h3 class="zg-col-head zg-col-head--sol">Die Lösung</h3>
+            <ul class="zg-list">
+              <li><span class="zg-check">✓</span>Starke Story: Pflanzenkohle erklärt sich selbst</li>
+              <li><span class="zg-check">✓</span>100% torffrei, organisch, Made in Germany</li>
+              <li><span class="zg-check">✓</span>Bundle-Systeme für höheren Warenkorb</li>
+              <li><span class="zg-check">✓</span>Exklusives Sortiment mit Alleinstellungsmerkmal</li>
+            </ul>
+            <div class="zg-cta">
+              <div class="zg-prod-label">Sortiment für Händler:</div>
+              <div class="zg-prods"><span>Alle 9 Produkte</span><span>6 Bundle-Systeme</span><span>Händlerpreisliste</span></div>
+              <a href="#kontakt" class="btn-outline-light">Händlergespräch anfragen →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ BUNDLES ═══ -->
+  <section class="bundles" id="bundles" aria-label="Bundle-Systeme">
+    <div class="bundles-inner">
+      <p class="section-kicker reveal">// Systemlösungen</p>
+      <h2 class="section-h2 reveal reveal-d1">Bundle-Systeme.<br><em>Aufeinander abgestimmt.</em></h2>
+      <p class="bundles-sub reveal reveal-d2">Gute Kombinationen entstehen immer dann, wenn die Produktfunktionen sich optimal ergänzen. Unsere Bundles decken alle drei Ebenen ab: Struktur · Speicher · Leben.</p>
+
+      <div class="bundle-grid">
+
+        <article class="bundle-card reveal">
+          <div class="bundle-badge">Einsteiger</div>
+          <h3 class="bundle-name">Basis-System</h3>
+          <p class="bundle-subtitle">Bodenaufbau &amp; Langzeitfruchtbarkeit</p>
+          <ul class="bundle-products">
+            <li>Pflanzenkohle 5 L</li>
+            <li>Terra Preta Konzentrat 5 L</li>
+            <li>Gartenerde 20 L</li>
+          </ul>
+          <div class="bundle-why">Pflanzenkohle wirkt wie ein Schwamm · Terra Preta bringt Mikroorganismen · Gartenerde als Träger</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 60,85 €</div>
+            <div class="bundle-price">55,95 €</div>
+          </div>
+        </article>
+
+        <article class="bundle-card reveal reveal-d1">
+          <div class="bundle-badge bundle-badge--green">Hobbygärtner</div>
+          <h3 class="bundle-name">Aktivierungs-System</h3>
+          <p class="bundle-subtitle">Boden + Sofortwirkung</p>
+          <ul class="bundle-products">
+            <li>Terra Preta Konzentrat 5 L</li>
+            <li>Pflanzenkohle 20 L</li>
+            <li>Brennnesselsud Konzentrat 2 L</li>
+          </ul>
+          <div class="bundle-why">Mikroorganismen + Langzeitspeicher + Sofortstickstoff = aktives Bodenleben</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 63,85 €</div>
+            <div class="bundle-price">58,95 €</div>
+          </div>
+        </article>
+
+        <article class="bundle-card reveal reveal-d2">
+          <div class="bundle-badge bundle-badge--top">Hochbeet-Power</div>
+          <h3 class="bundle-name">Gemüse- &amp; Hochbeet-System</h3>
+          <p class="bundle-subtitle">Mehr Wachstum. Mehr Ertrag.</p>
+          <ul class="bundle-products">
+            <li>Hochbeet aktiv 10 L</li>
+            <li>Gemüse aktiv 10 L</li>
+            <li>Dünger stark 5 L</li>
+            <li>Brennnesselsud 2 L</li>
+          </ul>
+          <div class="bundle-why">Für Starkzehrer: schnelles Wachstum + hohe Erträge + Sofortwirkung</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 72,80 €</div>
+            <div class="bundle-price">66,95 €</div>
+          </div>
+        </article>
+
+        <article class="bundle-card reveal">
+          <div class="bundle-badge">Urban Garden</div>
+          <h3 class="bundle-name">Balkon- &amp; Topfpflanzen</h3>
+          <p class="bundle-subtitle">Kleiner Raum, große Ernte</p>
+          <ul class="bundle-products">
+            <li>Balkon aktiv 5 L</li>
+            <li>Gartenerde 10 L</li>
+            <li>Brennnesselsud 1 L</li>
+          </ul>
+          <div class="bundle-why">Ideal für Töpfe und Balkonkästen – einfach in der Anwendung</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 47,85 €</div>
+            <div class="bundle-price">43,95 €</div>
+          </div>
+        </article>
+
+        <article class="bundle-card reveal reveal-d1">
+          <div class="bundle-badge bundle-badge--green">Tree Vital</div>
+          <h3 class="bundle-name">Baum- &amp; Dauerpflanzen</h3>
+          <p class="bundle-subtitle">Langzeitkraft für starke Bäume</p>
+          <ul class="bundle-products">
+            <li>Baumringe 10 L</li>
+            <li>Terra Preta Konzentrat 5 L</li>
+            <li>Pflanzenkohle 20 L</li>
+          </ul>
+          <div class="bundle-why">Tiefenwirksame Nährstoffe + langfristige Bodenverbesserung + weniger Pflegeaufwand</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 63,85 €</div>
+            <div class="bundle-price">58,95 €</div>
+          </div>
+        </article>
+
+        <article class="bundle-card bundle-card--premium reveal reveal-d2">
+          <div class="bundle-badge bundle-badge--premium">Profi-System</div>
+          <h3 class="bundle-name">Boden-Master</h3>
+          <p class="bundle-subtitle">Das Premium-Komplettsystem</p>
+          <ul class="bundle-products">
+            <li>Gartenerde 10 L</li>
+            <li>Terra Preta Konzentrat 5 L</li>
+            <li>Pflanzenkohle 10 L</li>
+            <li>Dünger stark 5 L</li>
+            <li>Brennnesselsud 2 L</li>
+          </ul>
+          <div class="bundle-why">Deckt alle Ebenen ab: Boden + Leben + Nährstoffe. Kurz- und Langzeitwirkung kombiniert.</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price-old">Einzeln: 88,75 €</div>
+            <div class="bundle-price">80,95 €</div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="bundles-note reveal">Mindestbestellwert 50 € · Versandkosten 3,50 € · Standardpaletten (400 / 600 / 800 L) auf Anfrage</p>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════ PRODUKTION ═══ -->
+  <section class="produktion" aria-label="Made in Germany">
+    <div class="produktion-inner">
+      <div class="produktion-text">
+        <p class="section-kicker section-kicker--light reveal">// Made in Germany</p>
+        <h2 class="section-h2 section-h2--light reveal reveal-d1">Regional.<br>Nachhaltig.<br>Verantwortungsvoll.</h2>
+        <p class="produktion-desc reveal reveal-d2">Kurze Transportwege, 100% natürliche Rohstoffe, plastikfreie Kartonverpackung. In Zeiten teurer Energie greifen wir bewusst auf regionale organische Ausgangsstoffe zurück.</p>
+      </div>
+      <div class="produktion-facts">
+        <div class="fact-item reveal"><div class="fact-n">100%</div><div class="fact-l">Organisch</div></div>
+        <div class="fact-item reveal reveal-d1"><div class="fact-n">0</div><div class="fact-l">Chemische Zusätze</div></div>
+        <div class="fact-item reveal reveal-d2"><div class="fact-n">DE</div><div class="fact-l">Regionaler Ursprung</div></div>
+        <div class="fact-item reveal reveal-d3"><div class="fact-n">♻</div><div class="fact-l">Kreislaufwirtschaft</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ KONTAKT ═══ -->
+  <section class="kontakt" id="kontakt" aria-label="Kontakt">
+    <div class="kontakt-inner">
+      <div class="kontakt-text">
+        <p class="section-kicker section-kicker--light reveal">// Kontakt</p>
+        <h2 class="section-h2 section-h2--light reveal reveal-d1">Starten Sie mit<br>einer Testfläche.</h2>
+        <p class="kontakt-desc reveal reveal-d2">Kein Risiko. Messbare Ergebnisse. Schnelle Umsetzung.<br>Wir erstellen Ihnen einen konkreten Vorschlag für Ihre Situation.</p>
+        <div class="kontakt-info reveal reveal-d3">
+          <div class="kontakt-info-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@carbon4future.de">info@carbon4future.de</a>
+          </div>
+          <div class="kontakt-info-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+4972409427560">0 72 40 / 94 27 56</a>
+          </div>
+          <div class="kontakt-info-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Rosenstraße 15 · 75031 Eppingen-Adelshofen</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="kontakt-form reveal reveal-d2" id="kontakt-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-name">Name *</label>
+            <input class="form-input" type="text" id="f-name" name="name" placeholder="Ihr Name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-org">Organisation</label>
+            <input class="form-input" type="text" id="f-org" name="organisation" placeholder="Unternehmen / Verein" autocomplete="organization">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-email">E-Mail *</label>
+            <input class="form-input" type="email" id="f-email" name="email" placeholder="ihre@mail.de" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-phone">Telefon</label>
+            <input class="form-input" type="tel" id="f-phone" name="telefon" placeholder="Optional" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-interest">Ich interessiere mich für</label>
+          <select class="form-select" id="f-interest" name="interesse">
+            <option value="">Bitte wählen …</option>
+            <option value="hobbygarten">Hobbygarten / Eigenheim</option>
+            <option value="galabau">GaLaBau / Grünflächenpflege</option>
+            <option value="kommune">Kommune / Park</option>
+            <option value="golf">Golf / Sportanlage</option>
+            <option value="haendler">Händlersortiment</option>
+            <option value="sonstiges">Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-msg">Nachricht</label>
+          <textarea class="form-textarea" id="f-msg" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen oder Ihre Fläche …" rows="4"></textarea>
+        </div>
+        <button class="form-btn" type="submit">
+          Anfrage senden
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
-
-        <div class="r-result" id="rResult" role="region" aria-label="Berechnungsergebnis" aria-live="polite">
-          <div class="r-res-card">
-            <div class="r-res-n" id="resLiter">–</div>
-            <div class="r-res-l">Liter gesamt</div>
-          </div>
-          <div class="r-res-card">
-            <div class="r-res-n" id="resPreis">–</div>
-            <div class="r-res-l">Richtpreis ab</div>
-          </div>
-          <div class="r-res-card">
-            <div class="r-res-n r-res-n--sm" id="resProd">–</div>
-            <div class="r-res-l">Empfohlenes Produkt</div>
-          </div>
+        <div class="form-success" id="form-success" aria-live="polite" hidden>
+          ✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.
         </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- PRODUKTION -->
-  <section class="produktion" id="produktion">
-    <div class="prod-bg" aria-hidden="true"></div>
-    <div class="prod-overlay" aria-hidden="true"></div>
-    <div class="prod-content">
-      <p class="caps-kicker reveal">// Made in Germany</p>
-      <h2 class="produktion-h2 reveal reveal-d1">Hergestellt in<br><em class="text-gruen-light">Deutschland.</em></h2>
-      <p class="produktion-body reveal reveal-d2">Kurze Transportwege, 100% natürliche Rohstoffe, plastikfreie Kartonverpackung. Unsere Produktion steht für nachhaltige Kreislaufwirtschaft.</p>
-      <div class="facts-grid">
-        <div class="fact reveal reveal-d1"><div class="fact-n">100%</div><div class="fact-l">Organisch</div></div>
-        <div class="fact reveal reveal-d2"><div class="fact-n">0</div><div class="fact-l">Chemische Zusätze</div></div>
-        <div class="fact reveal reveal-d3">
-          <div class="fact-n" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
-          </div>
-          <div class="fact-l">Produktion DE</div>
-        </div>
-        <div class="fact reveal reveal-d4">
-          <div class="fact-n" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-2 4 2 4M15 7l2 4-2 4"/></svg>
-          </div>
-          <div class="fact-l">Kreislaufwirtschaft</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta" id="kontakt">
-    <h2>Bereit für gesündere Böden?</h2>
-    <p>Starten Sie mit einer kleinen Testfläche. Die Ergebnisse sprechen für sich.</p>
-    <div class="cta-btns">
-      <a href="mailto:info@carbon4future.de" class="btn-white">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Kontakt aufnehmen
-      </a>
-      <a href="#produkte" class="btn-white-out">Produkte ansehen</a>
+      </form>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <img src="assets/images/img-11.png" alt="Carbon4Future" loading="lazy" class="footer-logo">
-    <nav class="footer-links" aria-label="Footer-Navigation">
-      <a href="#caps">Vorteile</a>
-      <a href="#produkte">Sortiment</a>
-      <a href="#rechner">Rechner</a>
-      <a href="#produktion">Produktion</a>
-    </nav>
-    <div class="footer-copy">© 2026 Carbon4Future GmbH · Klimaschutz beginnt im Boden.</div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/img-11.png" alt="Carbon4Future" loading="lazy" class="footer-logo">
+        <p class="footer-tagline">Klimaschutz beginnt im Boden.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer-Navigation">
+        <a href="#pflanzenkohle">Pflanzenkohle</a>
+        <a href="#produkte">Produkte</a>
+        <a href="#zielgruppen">Zielgruppen</a>
+        <a href="#bundles">Bundles</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="footer-copy">© 2026 Carbon4Future · Ralf Wuggazer · Rosenstraße 15, 75031 Eppingen-Adelshofen</div>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

@@ -48,8 +48,8 @@ ul { list-style: none; }
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.10;
 }
 
 /* ─── SKIP LINK ───────────────────────────────────────────── */
@@ -179,8 +179,17 @@ ul { list-style: none; }
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
-.nav-logo { display: flex; align-items: center; }
-.nav-logo-img { height: 42px; width: auto; object-fit: contain; }
+.nav-logo { display: flex; align-items: center; gap: .55rem; }
+.nav-logo-img { height: 40px; width: auto; object-fit: contain; }
+.nav-logo-text {
+  font-family: var(--ff-head);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--cream-text);
+  letter-spacing: -.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
 
 .nav-pill {
   display: flex;
@@ -363,7 +372,7 @@ ul { list-style: none; }
 .hstat-l {
   font-size: .73rem;
   font-weight: 500;
-  color: rgba(245,237,218,.65);
+  color: rgba(245,237,218,.78);
   line-height: 1.4;
   margin-top: .25rem;
 }
@@ -500,7 +509,7 @@ ul { list-style: none; }
 .pkohle-intro {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: rgba(245,237,218,.7);
+  color: rgba(245,237,218,.82);
   margin-top: 1.25rem;
 }
 
@@ -540,7 +549,7 @@ ul { list-style: none; }
 .pb-desc {
   font-size: .88rem;
   line-height: 1.6;
-  color: rgba(245,237,218,.6);
+  color: rgba(245,237,218,.75);
 }
 
 .pkohle-visual {
@@ -827,7 +836,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(245,237,218,.45);
+  color: rgba(245,237,218,.65);
   margin-bottom: .75rem;
 }
 .zg-prods {
@@ -1107,7 +1116,7 @@ ul { list-style: none; }
   align-items: flex-start;
   gap: .75rem;
   font-size: .92rem;
-  color: rgba(245,237,218,.7);
+  color: rgba(245,237,218,.82);
 }
 .kontakt-info-item svg { flex-shrink: 0; color: var(--leaf); margin-top: .1rem; }
 .kontakt-info-item a { transition: color .2s; }
@@ -1138,7 +1147,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(245,237,218,.5);
+  color: rgba(245,237,218,.68);
 }
 .form-input,
 .form-select,
@@ -1211,11 +1220,12 @@ ul { list-style: none; }
   gap: 2rem;
 }
 .footer-brand { display: flex; flex-direction: column; gap: .4rem; }
-.footer-logo { height: 36px; width: auto; object-fit: contain; opacity: .7; transition: opacity .2s; }
+.footer-brand-row { display: flex; align-items: center; gap: .45rem; }
+.footer-logo { height: 36px; width: auto; object-fit: contain; opacity: .85; transition: opacity .2s; }
 .footer-logo:hover { opacity: 1; }
 .footer-tagline {
   font-size: .78rem;
-  color: rgba(245,237,218,.35);
+  color: rgba(245,237,218,.5);
   letter-spacing: .06em;
 }
 .footer-links {

@@ -180,7 +180,7 @@ ul { list-style: none; }
 }
 
 .nav-logo { display: flex; align-items: center; gap: .55rem; }
-.nav-logo-img { height: 40px; width: 40px; object-fit: cover; border-radius: 50%; }
+.nav-logo-img { height: 44px; width: auto; object-fit: contain; }
 .nav-logo-text {
   font-family: var(--ff-head);
   font-size: .95rem;
@@ -484,6 +484,10 @@ ul { list-style: none; }
    ═══════════════════════════════════════════════════════════ */
 .pkohle {
   background: var(--coal);
+  background-image: url('../assets/images/coal-bg.png');
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
   padding: 7rem 2rem;
   position: relative;
   overflow: hidden;
@@ -492,7 +496,9 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(46,112,32,.18) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(46,112,32,.18) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(16,11,6,.88) 0%, rgba(16,11,6,.78) 50%, rgba(16,11,6,.90) 100%);
   pointer-events: none;
 }
 
@@ -1221,7 +1227,7 @@ ul { list-style: none; }
 }
 .footer-brand { display: flex; flex-direction: column; gap: .4rem; }
 .footer-brand-row { display: flex; align-items: center; gap: .45rem; }
-.footer-logo { height: 36px; width: 36px; object-fit: cover; border-radius: 50%; opacity: .85; transition: opacity .2s; }
+.footer-logo { height: 36px; width: auto; object-fit: contain; opacity: .85; transition: opacity .2s; }
 .footer-logo:hover { opacity: 1; }
 .footer-tagline {
   font-size: .78rem;

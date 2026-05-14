@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.zg-visual img').forEach(img => {
+  document.querySelectorAll('.zg-visual img, .kontakt-recipe img').forEach(img => {
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
 

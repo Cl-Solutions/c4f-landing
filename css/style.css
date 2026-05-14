@@ -1105,16 +1105,25 @@ ul { list-style: none; }
 }
 .bundle-price-row {
   display: flex;
-  align-items: baseline;
-  gap: .75rem;
+  flex-direction: column;
+  gap: .35rem;
   margin-top: auto;
   padding-top: .5rem;
 }
-.bundle-price-old {
-  font-size: .8rem;
-  color: var(--muted);
-  text-decoration: line-through;
+.bundle-price-main {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
 }
+.bundle-price-old {
+  font-size: .88rem;
+  font-weight: 500;
+  color: rgba(100,80,60,.7);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+.bundle-card--premium .bundle-price-old { color: rgba(245,237,218,.45); }
 .bundle-price {
   font-family: var(--ff-head);
   font-size: 1.6rem;
@@ -1123,6 +1132,20 @@ ul { list-style: none; }
   letter-spacing: -.02em;
 }
 .bundle-card--premium .bundle-price { color: var(--leaf); }
+.bundle-save {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--leaf);
+  background: rgba(61,138,46,.12);
+  border: 1px solid rgba(61,138,46,.35);
+  padding: .22rem .65rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.bundle-card--premium .bundle-save {
+  background: rgba(61,138,46,.2);
+  border-color: rgba(61,138,46,.5);
+}
 
 .bundles-note {
   text-align: center;

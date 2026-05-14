@@ -295,6 +295,269 @@
     </div>
   </section>
 
+  <!-- ════════════════════════ ROI-RECHNER ════════ -->
+  <section class="roi" id="roi-rechner" aria-label="ROI-Rechner">
+    <div class="roi-inner">
+      <div class="roi-head">
+        <p class="section-kicker reveal">// ROI-Rechner</p>
+        <h2 class="section-h2 reveal reveal-d1">Was kostet mich das?<br><em>Was spare ich ein?</em></h2>
+        <p class="roi-intro reveal reveal-d2">Berechne in 2 Minuten die optimale Bodenlösung und dein jährliches Einsparpotenzial.</p>
+      </div>
+
+      <div class="roi-card reveal reveal-d3">
+
+        <!-- Step Bar -->
+        <div class="roi-stepbar" aria-hidden="true">
+          <div class="roi-stepdot roi-stepdot--active" id="roi-sd-1">
+            <div class="roi-sdnum">1</div>
+            <div class="roi-sdlbl">Profil</div>
+          </div>
+          <div class="roi-stepline" id="roi-sl-1"></div>
+          <div class="roi-stepdot" id="roi-sd-2">
+            <div class="roi-sdnum">2</div>
+            <div class="roi-sdlbl">Fläche</div>
+          </div>
+          <div class="roi-stepline" id="roi-sl-2"></div>
+          <div class="roi-stepdot" id="roi-sd-3">
+            <div class="roi-sdnum">3</div>
+            <div class="roi-sdlbl">Ergebnis</div>
+          </div>
+        </div>
+
+        <!-- ── Panel 1: Profil ── -->
+        <div class="roi-panel" id="roi-p1">
+
+          <div class="roi-section">
+            <label class="roi-label" for="roi-bereich">1. Ihr Tätigkeitsbereich</label>
+            <div class="roi-select-wrap">
+              <select class="roi-select" id="roi-bereich">
+                <option value="">Bitte auswählen …</option>
+                <option value="Agrarhandel">Agrarhandel</option>
+                <option value="Bio-Anbau">Bio-Anbau</option>
+                <option value="Dachbegrünung">Dachbegrünung</option>
+                <option value="Erwerbsgartenbau">Erwerbsgartenbau</option>
+                <option value="GaLaBau">GaLaBau</option>
+                <option value="Gartencenter / Baumarkt">Gartencenter / Baumarkt</option>
+                <option value="Golfanlage">Golfanlage</option>
+                <option value="Hobbygärtner">Hobbygärtner</option>
+                <option value="Imker">Imker</option>
+                <option value="Kleingartenverein">Kleingartenverein</option>
+                <option value="Kommune / Park">Kommune / Park</option>
+                <option value="Landwirt">Landwirt</option>
+                <option value="Lebensmitteleinzelhandel">Lebensmitteleinzelhandel</option>
+                <option value="Obst- und Gartenbauverein">Obst- und Gartenbauverein</option>
+                <option value="Parkanlage">Parkanlage</option>
+                <option value="Sportstättenbau / Sportverein">Sportstättenbau / Sportverein</option>
+                <option value="Stadtmöblierung">Stadtmöblierung</option>
+                <option value="Sonstige">Sonstige</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="roi-section">
+            <div class="roi-label">2. Ihre Hauptprobleme <span class="roi-label-meta">max. 3 auswählen</span></div>
+            <div class="roi-prob-badge" id="roi-prob-count">0 / 3 ausgewählt</div>
+            <div class="roi-prob-grid">
+              <div class="roi-prob-col">
+                <div class="roi-prob-cat">Boden / Wasser</div>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Boden trocknet schnell aus"><span>Boden trocknet schnell aus</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Schlechte Wasserspeicherung"><span>Schlechte Wasserspeicherung</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Humusarmut"><span>Humusarmut</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Verdichteter Boden"><span>Verdichteter Boden</span></label>
+                <div class="roi-prob-cat roi-prob-cat--gap">Pflege / Kosten</div>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Zu hoher Bewässerungsaufwand"><span>Zu hoher Bewässerungsaufwand</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Hoher Düngerbedarf"><span>Hoher Düngerbedarf</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Hohe Pflegekosten"><span>Hohe Pflegekosten</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Häufige Nachsaaten"><span>Häufige Nachsaaten</span></label>
+              </div>
+              <div class="roi-prob-col">
+                <div class="roi-prob-cat">Pflanzenwachstum</div>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Schwaches Wachstum"><span>Schwaches Wachstum</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Geringe Erträge"><span>Geringe Erträge</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Nährstoffmangel"><span>Nährstoffmangel</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Schlechte Durchwurzelung"><span>Schlechte Durchwurzelung</span></label>
+                <div class="roi-prob-cat roi-prob-cat--gap">Umwelt / Nachhaltigkeit</div>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="CO₂-Reduktion zu gering"><span>CO₂-Reduktion zu gering</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Regenerative Bodenpflege"><span>Regenerative Bodenpflege erforderlich</span></label>
+                <label class="roi-chk"><input type="checkbox" name="problem" value="Torfersatz gesucht"><span>Geeigneter Torfersatz fehlt</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="roi-panel-nav roi-panel-nav--right">
+            <button class="btn-primary" id="roi-next-1">Weiter zur Fläche →</button>
+          </div>
+        </div>
+
+        <!-- ── Panel 2: Fläche ── -->
+        <div class="roi-panel" id="roi-p2" hidden>
+
+          <div class="roi-section">
+            <div class="roi-label">3. Ihre Fläche</div>
+            <div class="roi-dim-row">
+              <div class="roi-dim-field">
+                <div class="roi-dim-label">Länge</div>
+                <div class="roi-dim-input-wrap">
+                  <input class="roi-input" type="number" id="roi-laenge" placeholder="4" min="0.1" step="0.1">
+                  <span class="roi-dim-unit">m</span>
+                </div>
+              </div>
+              <div class="roi-dim-sep">×</div>
+              <div class="roi-dim-field">
+                <div class="roi-dim-label">Breite</div>
+                <div class="roi-dim-input-wrap">
+                  <input class="roi-input" type="number" id="roi-breite" placeholder="2" min="0.1" step="0.1">
+                  <span class="roi-dim-unit">m</span>
+                </div>
+              </div>
+              <div class="roi-dim-sep">=</div>
+              <div class="roi-dim-field">
+                <div class="roi-dim-label">Fläche</div>
+                <div class="roi-dim-result" id="roi-area-disp">– m²</div>
+              </div>
+            </div>
+
+            <div class="roi-tiefe-block">
+              <div class="roi-label roi-label--sm">Bearbeitungstiefe</div>
+              <div class="roi-tiefe-row">
+                <div class="roi-dim-input-wrap roi-dim-input-wrap--fixed">
+                  <input class="roi-input" type="number" id="roi-tiefe" value="20" min="5" max="150" step="5">
+                  <span class="roi-dim-unit">cm</span>
+                </div>
+                <div class="roi-tiefe-presets">
+                  <button class="roi-preset" data-tiefe="10">10 cm<em>Pflege</em></button>
+                  <button class="roi-preset roi-preset--active" data-tiefe="20">20 cm<em>Standard</em></button>
+                  <button class="roi-preset" data-tiefe="40">40 cm<em>Neuanlage</em></button>
+                </div>
+              </div>
+              <div class="roi-vol-disp">Volumen: <strong id="roi-vol-val">–</strong> m³</div>
+            </div>
+          </div>
+
+          <div class="roi-two-col">
+            <div class="roi-section">
+              <div class="roi-label">4. Bodenart</div>
+              <div class="roi-radio-group">
+                <label class="roi-radio"><input type="radio" name="boden" value="0.4"><span>Sandig <em>(+40% Menge)</em></span></label>
+                <label class="roi-radio"><input type="radio" name="boden" value="-0.25"><span>Lehmig <em>(−25%)</em></span></label>
+                <label class="roi-radio"><input type="radio" name="boden" value="0.5"><span>Verdichtet <em>(+50%)</em></span></label>
+                <label class="roi-radio"><input type="radio" name="boden" value="-0.6"><span>Humos <em>(−60%)</em></span></label>
+                <label class="roi-radio"><input type="radio" name="boden" value="0"><span>Kalkhaltig</span></label>
+                <label class="roi-radio"><input type="radio" name="boden" value="-0.6"><span>Torfhaltig <em>(−60%)</em></span></label>
+              </div>
+            </div>
+            <div class="roi-section">
+              <div class="roi-label">5. Anwendung</div>
+              <div class="roi-radio-group">
+                <label class="roi-radio"><input type="radio" name="anwendung" value="1.0"><span>Neuanlage</span></label>
+                <label class="roi-radio"><input type="radio" name="anwendung" value="0.3"><span>Pflege &amp; Erhaltung</span></label>
+                <label class="roi-radio"><input type="radio" name="anwendung" value="1.0"><span>Regeneration</span></label>
+                <label class="roi-radio"><input type="radio" name="anwendung" value="0.25"><span>Nachdüngung</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="roi-panel-nav">
+            <button class="roi-back-btn" id="roi-back-2">← Zurück</button>
+            <button class="btn-primary" id="roi-next-2">Ergebnis berechnen →</button>
+          </div>
+        </div>
+
+        <!-- ── Panel 3: Ergebnis ── -->
+        <div class="roi-panel" id="roi-p3" hidden>
+
+          <div class="roi-result-header">
+            <div class="roi-result-kicker">Ihre persönliche Empfehlung</div>
+            <div class="roi-result-meta" id="roi-meta-disp"></div>
+          </div>
+
+          <div class="roi-rec-cards" id="roi-rec-cards"></div>
+
+          <div class="roi-invest-bar">
+            <span>Geschätzte Gesamtinvestition:</span>
+            <strong id="roi-total">–</strong>
+          </div>
+
+          <div class="roi-sav-section">
+            <div class="roi-sav-title">Ihre jährliche Einsparung</div>
+            <div class="roi-sav-desc">Geben Sie Ihre aktuellen Aufwände ein – wir zeigen Ihnen das Einsparpotenzial durch C4F-Produkte.</div>
+            <div class="roi-sav-rows">
+              <div class="roi-sav-row">
+                <div class="roi-sav-lbl">
+                  <div class="roi-sav-name">Wasserverbrauch Bewässerung</div>
+                  <div class="roi-sav-rate">≈ 30 % weniger durch Pflanzenkohle · €5/m³</div>
+                </div>
+                <div class="roi-sav-input-wrap">
+                  <input type="number" class="roi-sav-inp" id="sav-wasser" placeholder="0" min="0">
+                  <span class="roi-sav-unit">m³/Jahr</span>
+                </div>
+                <div class="roi-sav-result" id="sav-wasser-r"></div>
+              </div>
+              <div class="roi-sav-row">
+                <div class="roi-sav-lbl">
+                  <div class="roi-sav-name">Düngerverbrauch</div>
+                  <div class="roi-sav-rate">≈ 40 % weniger durch Terra Preta · €1,50/kg</div>
+                </div>
+                <div class="roi-sav-input-wrap">
+                  <input type="number" class="roi-sav-inp" id="sav-duenger" placeholder="0" min="0">
+                  <span class="roi-sav-unit">kg/Jahr</span>
+                </div>
+                <div class="roi-sav-result" id="sav-duenger-r"></div>
+              </div>
+              <div class="roi-sav-row">
+                <div class="roi-sav-lbl">
+                  <div class="roi-sav-name">Nachsaaten / Ersatzpflanzungen</div>
+                  <div class="roi-sav-rate">≈ 50 % weniger durch gesunden Boden · €10/kg</div>
+                </div>
+                <div class="roi-sav-input-wrap">
+                  <input type="number" class="roi-sav-inp" id="sav-nachsaat" placeholder="0" min="0" step="0.1">
+                  <span class="roi-sav-unit">kg/Jahr</span>
+                </div>
+                <div class="roi-sav-result" id="sav-nachsaat-r"></div>
+              </div>
+              <div class="roi-sav-row">
+                <div class="roi-sav-lbl">
+                  <div class="roi-sav-name">Pflegestunden</div>
+                  <div class="roi-sav-rate">≈ 25 % weniger Aufwand · €50/Std.</div>
+                </div>
+                <div class="roi-sav-input-wrap">
+                  <input type="number" class="roi-sav-inp" id="sav-arbeit" placeholder="0" min="0">
+                  <span class="roi-sav-unit">Std./Jahr</span>
+                </div>
+                <div class="roi-sav-result" id="sav-arbeit-r"></div>
+              </div>
+            </div>
+
+            <div class="roi-summary" id="roi-summary" hidden>
+              <div class="roi-sum-row">
+                <span>Gesamtinvestition (einmalig):</span>
+                <strong id="roi-sum-invest">–</strong>
+              </div>
+              <div class="roi-sum-row">
+                <span>Mögliche Einsparung / Jahr:</span>
+                <strong class="roi-sum-green" id="roi-sum-savings">–</strong>
+              </div>
+              <div class="roi-sum-row roi-sum-row--big">
+                <span>Amortisation in ca.:</span>
+                <strong id="roi-sum-amort">–</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="roi-cta-wrap">
+            <a href="#kontakt" class="btn-primary">Angebot anfragen →</a>
+            <button class="roi-reset-btn" id="roi-reset">Neu berechnen</button>
+          </div>
+
+          <div class="roi-panel-nav">
+            <button class="roi-back-btn" id="roi-back-3">← Zurück zur Fläche</button>
+          </div>
+        </div>
+
+      </div><!-- /.roi-card -->
+    </div><!-- /.roi-inner -->
+  </section>
+
   <!-- ═══════════════════════════ ZIELGRUPPEN ═══ -->
   <section class="zielgruppen" id="zielgruppen" aria-label="Zielgruppen">
     <div class="zg-inner">

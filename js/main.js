@@ -225,7 +225,256 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── SMOOTH SCROLL FOR NAV LINKS ──────────────────────────
+  // ─── ROI-RECHNER ─────────────────────────────────────────────
+  const ROI_CATALOG = {
+    pflanzenkohle: { name: 'Pflanzenkohle',           desc: 'Speichert Wasser & Nährstoffe, bindet dauerhaft CO₂.',       dosierung: 50,  pricePerL: 2.59 },
+    terrapreta:    { name: 'Terra Preta Konzentrat',  desc: 'Aktives Bodenleben und dauerhafter Humusaufbau.',             dosierung: 10,  pricePerL: 2.99 },
+    hochbeet:      { name: 'Hochbeet aktiv',          desc: 'Schnelle Nährstofffreisetzung für üppiges Wachstum.',         dosierung: 30,  pricePerL: 1.90 },
+    gemuese:       { name: 'Gemüsegarten aktiv',      desc: 'Ausgewogene Grundversorgung für gesunde Ernte.',             dosierung: 30,  pricePerL: 1.90 },
+    baumring:      { name: 'Baumring aktiv',           desc: 'Gezielter Wasserspeicher im Wurzelbereich.',                 dosierung: 20,  pricePerL: 2.10 },
+    duenger:       { name: 'Dünger stark',             desc: 'Sofortwirkung bei Nährstoffmangel und hohem Düngebedarf.',   dosierung: 10,  pricePerL: 2.79 },
+    gartenerde:    { name: 'Gartenerde',               desc: 'Hochwertige, torffreie Trägererde für alle Anwendungen.',    dosierung: 80,  pricePerL: 1.65 },
+  };
+
+  const ROI_PROB_MAP = {
+    'Boden trocknet schnell aus':   { p: 'pflanzenkohle', s: 'terrapreta'  },
+    'Schlechte Wasserspeicherung':  { p: 'pflanzenkohle', s: 'gartenerde'  },
+    'Humusarmut':                   { p: 'terrapreta',    s: 'pflanzenkohle'},
+    'Verdichteter Boden':           { p: 'pflanzenkohle', s: 'gartenerde'  },
+    'Schwaches Wachstum':           { p: 'hochbeet',      s: 'duenger'     },
+    'Geringe Erträge':              { p: 'gemuese',       s: 'hochbeet'    },
+    'Nährstoffmangel':              { p: 'duenger',       s: 'gemuese'     },
+    'Schlechte Durchwurzelung':     { p: 'baumring',      s: 'terrapreta'  },
+    'Zu hoher Bewässerungsaufwand': { p: 'pflanzenkohle', s: 'terrapreta'  },
+    'Hoher Düngerbedarf':           { p: 'terrapreta',    s: 'pflanzenkohle'},
+    'Hohe Pflegekosten':            { p: 'terrapreta',    s: 'pflanzenkohle'},
+    'Häufige Nachsaaten':           { p: 'gemuese',       s: 'duenger'     },
+    'CO₂-Reduktion zu gering':      { p: 'pflanzenkohle', s: 'terrapreta'  },
+    'Regenerative Bodenpflege':     { p: 'terrapreta',    s: 'pflanzenkohle'},
+    'Torfersatz gesucht':           { p: 'gartenerde',    s: 'terrapreta'  },
+  };
+
+  const ROI_SAV = {
+    wasser:   { rate: 0.30, cost: 5.00  },
+    duenger:  { rate: 0.40, cost: 1.50  },
+    nachsaat: { rate: 0.50, cost: 10.00 },
+    arbeit:   { rate: 0.25, cost: 50.00 },
+  };
+
+  const roiSection = document.getElementById('roi-rechner');
+  if (roiSection) {
+    let calcData = { volumen: 0, bodenFactor: 0, anwendungFactor: 1, probs: [] };
+    let totalInvestment = 0;
+
+    const scrollToRoi = () => {
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+      window.scrollTo({ top: roiSection.offsetTop - navH - 16, behavior: 'smooth' });
+    };
+
+    const goToStep = (step) => {
+      [1, 2, 3].forEach((n) => {
+        const panel = document.getElementById(`roi-p${n}`);
+        const dot   = document.getElementById(`roi-sd-${n}`);
+        if (panel) panel.hidden = (n !== step);
+        if (dot) {
+          dot.classList.toggle('roi-stepdot--active', n === step);
+          dot.classList.toggle('roi-stepdot--done',   n < step);
+        }
+        if (n < 3) {
+          const line = document.getElementById(`roi-sl-${n}`);
+          if (line) line.classList.toggle('roi-stepline--done', n < step);
+        }
+      });
+      scrollToRoi();
+    };
+
+    // ── Step 1 ──
+    const probCBs   = roiSection.querySelectorAll('[name="problem"]');
+    const probCount = document.getElementById('roi-prob-count');
+
+    const refreshProbCount = () => {
+      const n = [...probCBs].filter((c) => c.checked).length;
+      if (probCount) {
+        probCount.textContent = `${n} / 3 ausgewählt`;
+        probCount.style.color      = n === 3 ? 'var(--forest)' : '';
+        probCount.style.background = n === 3 ? 'rgba(27,77,16,.1)' : '';
+      }
+      probCBs.forEach((cb) => { if (!cb.checked) cb.disabled = (n >= 3); });
+    };
+    probCBs.forEach((cb) => cb.addEventListener('change', refreshProbCount));
+
+    document.getElementById('roi-next-1')?.addEventListener('click', () => {
+      const selected = [...probCBs].filter((c) => c.checked).map((c) => c.value);
+      if (!selected.length) {
+        if (probCount) { probCount.textContent = 'Bitte mindestens 1 Problem auswählen'; probCount.style.color = '#c0392b'; }
+        return;
+      }
+      calcData.probs = selected;
+      goToStep(2);
+    });
+
+    // ── Step 2 ──
+    const laengeEl = document.getElementById('roi-laenge');
+    const breiteEl = document.getElementById('roi-breite');
+    const tiefeEl  = document.getElementById('roi-tiefe');
+    const areaDisp = document.getElementById('roi-area-disp');
+    const volVal   = document.getElementById('roi-vol-val');
+
+    const updateVol = () => {
+      const l = parseFloat(laengeEl?.value) || 0;
+      const b = parseFloat(breiteEl?.value) || 0;
+      const t = parseFloat(tiefeEl?.value)  || 0;
+      const area = l * b;
+      const vol  = area * (t / 100);
+      if (areaDisp) areaDisp.textContent = area > 0 ? `${area.toFixed(1)} m²` : '– m²';
+      if (volVal)   volVal.textContent   = vol  > 0 ? vol.toFixed(2) : '–';
+      calcData.volumen = vol;
+    };
+
+    [laengeEl, breiteEl, tiefeEl].forEach((el) => el?.addEventListener('input', updateVol));
+
+    roiSection.querySelectorAll('.roi-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        roiSection.querySelectorAll('.roi-preset').forEach((b) => b.classList.remove('roi-preset--active'));
+        btn.classList.add('roi-preset--active');
+        if (tiefeEl) tiefeEl.value = btn.dataset.tiefe;
+        updateVol();
+      });
+    });
+
+    roiSection.querySelectorAll('[name="boden"]').forEach((r) => {
+      r.addEventListener('change', () => { calcData.bodenFactor = parseFloat(r.value); });
+    });
+    roiSection.querySelectorAll('[name="anwendung"]').forEach((r) => {
+      r.addEventListener('change', () => { calcData.anwendungFactor = parseFloat(r.value); });
+    });
+
+    document.getElementById('roi-back-2')?.addEventListener('click', () => goToStep(1));
+
+    document.getElementById('roi-next-2')?.addEventListener('click', () => {
+      if (!calcData.volumen) {
+        [laengeEl, breiteEl].forEach((el) => {
+          if (el) { el.style.borderColor = '#c0392b'; setTimeout(() => { el.style.borderColor = ''; }, 2000); }
+        });
+        return;
+      }
+      computeResults();
+      goToStep(3);
+    });
+
+    // ── Step 3: compute ──
+    const computeResults = () => {
+      const { volumen, bodenFactor, anwendungFactor, probs } = calcData;
+
+      // Score products
+      const scores = {};
+      probs.forEach((prob) => {
+        const map = ROI_PROB_MAP[prob];
+        if (!map) return;
+        scores[map.p] = (scores[map.p] || 0) + 2;
+        scores[map.s] = (scores[map.s] || 0) + 1;
+      });
+      const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => k);
+      if (!ranked.length) ranked.push('pflanzenkohle');
+
+      const factor = Math.max(0.1, anwendungFactor * (1 + bodenFactor));
+      let totalPrice = 0;
+
+      const recContainer = document.getElementById('roi-rec-cards');
+      if (recContainer) {
+        const rankLabels = ['Primär', 'Ergänzend', 'Empfohlen'];
+        recContainer.innerHTML = ranked.map((key, i) => {
+          const prod   = ROI_CATALOG[key];
+          const liters = Math.max(1, Math.ceil(volumen * prod.dosierung * factor));
+          const price  = liters * prod.pricePerL;
+          totalPrice  += price;
+          return `<div class="roi-rec-card">
+            <div class="roi-rec-rank">${rankLabels[i] || 'Empfohlen'}</div>
+            <div class="roi-rec-name">${prod.name}</div>
+            <div class="roi-rec-desc">${prod.desc}</div>
+            <div class="roi-rec-liters">≈ ${liters} Liter</div>
+            <div class="roi-rec-price">ca. ${price.toFixed(2).replace('.', ',')} €</div>
+          </div>`;
+        }).join('');
+      }
+
+      const totalEl = document.getElementById('roi-total');
+      if (totalEl) totalEl.textContent = `ca. ${totalPrice.toFixed(2).replace('.', ',')} €`;
+      totalInvestment = totalPrice;
+
+      const bereich = document.getElementById('roi-bereich')?.value;
+      const metaEl  = document.getElementById('roi-meta-disp');
+      if (metaEl) metaEl.textContent = `${volumen.toFixed(2)} m³${bereich ? ' · ' + bereich : ''}`;
+
+      // Reset savings
+      Object.keys(ROI_SAV).forEach((key) => {
+        const inp = document.getElementById(`sav-${key}`);
+        const res = document.getElementById(`sav-${key}-r`);
+        if (inp) inp.value = '';
+        if (res) res.textContent = '';
+      });
+      const summaryEl = document.getElementById('roi-summary');
+      if (summaryEl) summaryEl.hidden = true;
+    };
+
+    // ── Savings live update ──
+    const updateSavings = () => {
+      let total = 0;
+      let hasInput = false;
+      Object.entries(ROI_SAV).forEach(([key, cfg]) => {
+        const val = parseFloat(document.getElementById(`sav-${key}`)?.value) || 0;
+        const res = document.getElementById(`sav-${key}-r`);
+        if (val > 0) {
+          hasInput = true;
+          const saving = val * cfg.cost * cfg.rate;
+          total += saving;
+          if (res) res.textContent = `− ${saving.toFixed(0)} €/Jahr`;
+        } else {
+          if (res) res.textContent = '';
+        }
+      });
+      const summaryEl = document.getElementById('roi-summary');
+      if (!summaryEl) return;
+      if (hasInput) {
+        summaryEl.hidden = false;
+        const invest = document.getElementById('roi-sum-invest');
+        const savings = document.getElementById('roi-sum-savings');
+        const amort   = document.getElementById('roi-sum-amort');
+        if (invest)  invest.textContent  = `${totalInvestment.toFixed(2).replace('.', ',')} €`;
+        if (savings) savings.textContent = `${total.toFixed(0)} €`;
+        if (amort)   amort.textContent   = total > 0 ? `${(totalInvestment / total).toFixed(1)} Jahre` : '–';
+      } else {
+        summaryEl.hidden = true;
+      }
+    };
+
+    Object.keys(ROI_SAV).forEach((key) => {
+      document.getElementById(`sav-${key}`)?.addEventListener('input', updateSavings);
+    });
+
+    // ── Back & Reset ──
+    document.getElementById('roi-back-3')?.addEventListener('click', () => goToStep(2));
+
+    document.getElementById('roi-reset')?.addEventListener('click', () => {
+      probCBs.forEach((cb) => { cb.checked = false; cb.disabled = false; });
+      refreshProbCount();
+      const berEl = document.getElementById('roi-bereich');
+      if (berEl) berEl.value = '';
+      if (laengeEl) laengeEl.value = '';
+      if (breiteEl) breiteEl.value = '';
+      if (tiefeEl)  tiefeEl.value = '20';
+      if (areaDisp) areaDisp.textContent = '– m²';
+      if (volVal)   volVal.textContent   = '–';
+      roiSection.querySelectorAll('[name="boden"], [name="anwendung"]').forEach((r) => { r.checked = false; });
+      roiSection.querySelectorAll('.roi-preset').forEach((b) => b.classList.remove('roi-preset--active'));
+      roiSection.querySelector('[data-tiefe="20"]')?.classList.add('roi-preset--active');
+      calcData = { volumen: 0, bodenFactor: 0, anwendungFactor: 1, probs: [] };
+      totalInvestment = 0;
+      goToStep(1);
+    });
+  }
+
+  // ─── SMOOTH SCROLL FOR NAV LINKS ─────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       const id = link.getAttribute('href').slice(1);

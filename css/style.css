@@ -33,7 +33,7 @@
 
 /* ─── RESET ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body {
   font-family: var(--ff-body);
   background-color: var(--cream);
@@ -266,6 +266,10 @@ ul { list-style: none; }
   padding: .75rem 2rem;
   border-radius: var(--radius);
   transition: color .2s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mob-link:hover { color: var(--leaf); }
 .mob-link--cta {
@@ -1888,6 +1892,23 @@ ul { list-style: none; }
   .roi-sav-row { grid-template-columns: 1fr; gap: .5rem; }
   .roi-dim-row { gap: .5rem; }
   .roi-invest-bar { flex-direction: column; align-items: flex-start; gap: .25rem; }
+
+  /* ROI panel nav: stack buttons vertically */
+  .roi-panel-nav { flex-direction: column; gap: .65rem; }
+  .roi-panel-nav--right { align-items: stretch; }
+  .roi-panel-nav .btn-primary { width: 100%; justify-content: center; }
+  .roi-back-btn { width: 100%; text-align: center; }
+
+  /* ROI result header: wrap info below kicker */
+  .roi-result-header { flex-direction: column; align-items: flex-start; gap: .3rem; }
+
+  /* ROI CTA: full-width button */
+  .roi-cta-wrap { flex-direction: column; align-items: stretch; }
+  .roi-cta-wrap .btn-primary { width: 100%; justify-content: center; }
+
+  /* ROI savings input — allow label to expand */
+  .roi-sav-lbl { min-width: 0; }
+  .roi-sav-inp { width: 72px; }
 }
 
 @media (max-width: 768px) {
@@ -1895,7 +1916,7 @@ ul { list-style: none; }
 
   /* Nav */
   .nav-pill  { display: none; }
-  .nav-burger { display: flex; }
+  .nav-burger { display: flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
   .nav { grid-template-columns: 1fr auto; padding: 0 1.25rem; }
   .nav-logo-text { font-size: .88rem; }
 
@@ -1936,8 +1957,8 @@ ul { list-style: none; }
     gap: .4rem;
   }
   .zg-tabs::-webkit-scrollbar { display: none; }
-  .zg-tab { flex-shrink: 0; font-size: .85rem; padding: .55rem 1.1rem; }
-  .zg-cols { padding: 1.75rem 1.25rem; gap: 1.75rem; }
+  .zg-tab { flex-shrink: 0; font-size: .85rem; padding: .55rem 1.1rem; min-height: 44px; }
+  .zg-cols { grid-template-columns: 1fr; padding: 1.75rem 1.25rem; gap: 1.25rem; }
 
   .bundles          { padding: 4rem 1.25rem; }
   .bundle-grid      { grid-template-columns: 1fr; gap: 1rem; }
@@ -1990,6 +2011,18 @@ ul { list-style: none; }
 
   .bundle-card      { padding: 1.5rem 1.25rem; }
   .kontakt-form     { padding: 1.25rem 1rem; }
+
+  /* ROI small-phone fixes */
+  .roi-card         { padding: 1.25rem 1rem; }
+  .roi-stepbar      { margin-bottom: 1.75rem; padding-bottom: 1.5rem; }
+  .roi-sdlbl        { font-size: .6rem; letter-spacing: .02em; }
+  .roi-tiefe-row    { flex-direction: column; align-items: flex-start; gap: .5rem; }
+  .roi-tiefe-presets { gap: .35rem; }
+  .roi-preset       { min-height: 44px; padding: .5rem .9rem; }
+  .roi-dim-row      { gap: .4rem; }
+  .roi-dim-sep      { align-self: center; padding-bottom: 0; }
+  .roi-sav-inp      { width: 60px; }
+  .roi-summary      { padding: 1rem 1.25rem; }
 }
 
 /* ═══════════════════════════════════════════════════════════

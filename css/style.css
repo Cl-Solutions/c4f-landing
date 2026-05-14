@@ -800,27 +800,33 @@ ul { list-style: none; }
 .zg-panel[style*="block"] { display: block; }
 
 .zg-panel-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  align-items: start;
 }
 
 .zg-visual {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(0,0,0,.25);
   line-height: 0;
 }
 .zg-visual img {
   width: 100%;
   height: auto;
-  max-height: 420px;
-  object-fit: cover;
-  object-position: center top;
   display: block;
-  transition: transform .6s var(--ease-out-quart);
+  transition: transform .5s var(--ease-out-quart);
 }
-.zg-visual:hover img { transform: scale(1.02); }
+.zg-visual:hover img { transform: scale(1.015); }
+
+@media (max-width: 900px) {
+  .zg-panel-layout {
+    grid-template-columns: 1fr;
+  }
+  .zg-visual { order: -1; }
+}
 
 .zg-cols {
   display: grid;

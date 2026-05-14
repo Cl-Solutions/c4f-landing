@@ -487,4 +487,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ─── ZIELGRUPPEN IMAGE LIGHTBOX ───────────────────────────
+  const lb = document.createElement('div');
+  lb.className = 'zg-lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.innerHTML = '<img class="zg-lightbox-img" alt=""><button class="zg-lightbox-close" aria-label="Schließen">✕</button>';
+  document.body.appendChild(lb);
+
+  const lbImg = lb.querySelector('.zg-lightbox-img');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.zg-visual img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  lb.querySelector('.zg-lightbox-close').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
 });

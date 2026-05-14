@@ -508,8 +508,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.zg-visual img, .kontakt-recipe img').forEach(img => {
+  document.querySelectorAll('.zg-visual, .kontakt-recipe').forEach(container => {
+    const img = container.querySelector('img');
+    if (!img) return;
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    const hint = document.createElement('p');
+    hint.className = 'zoom-hint';
+    hint.setAttribute('aria-hidden', 'true');
+    hint.textContent = '↗ Vergrößern';
+    hint.addEventListener('click', () => openLightbox(img.src, img.alt));
+    container.insertAdjacentElement('afterend', hint);
   });
 
   lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });

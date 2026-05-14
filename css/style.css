@@ -657,6 +657,7 @@ ul { list-style: none; }
 }
 
 .prod-img-wrap {
+  position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
   flex-shrink: 0;
@@ -689,6 +690,28 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: rgba(245,237,218,.45);
 }
+
+.prod-zoom-btn {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(0,0,0,.45);
+  border: none;
+  color: #fff;
+  font-size: .9rem;
+  line-height: 1;
+  cursor: zoom-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background .2s;
+  backdrop-filter: blur(4px);
+}
+.prod-zoom-btn:hover { background: rgba(0,0,0,.7); }
 
 .prod-body {
   padding: 1.25rem 1.5rem 1.5rem;

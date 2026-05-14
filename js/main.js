@@ -520,6 +520,17 @@ document.addEventListener('DOMContentLoaded', () => {
     container.insertAdjacentElement('afterend', hint);
   });
 
+  document.querySelectorAll('.prod-img-wrap').forEach(wrap => {
+    const img = wrap.querySelector('img');
+    if (!img) return;
+    const btn = document.createElement('button');
+    btn.className = 'prod-zoom-btn';
+    btn.setAttribute('aria-label', 'Vergrößern');
+    btn.textContent = '⤢';
+    btn.addEventListener('click', () => openLightbox(img.src, img.alt));
+    wrap.appendChild(btn);
+  });
+
   lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
   lb.querySelector('.zg-lightbox-close').addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });

@@ -1872,6 +1872,95 @@ ul { list-style: none; }
 }
 .roi-reset-btn:hover { color: var(--coal); }
 
+/* ─── EBC CERTIFICATION ───────────────────────────────────── */
+.pkohle-ebc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.5rem;
+}
+.pkohle-ebc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--leaf);
+  background: rgba(61,138,46,.15);
+  border: 1px solid rgba(61,138,46,.28);
+  padding: .35rem .85rem;
+  border-radius: 50px;
+  letter-spacing: .04em;
+}
+
+.prod-ebc {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--forest-mid);
+  letter-spacing: .04em;
+}
+
+/* ─── PRODUCT TECHNICAL DETAILS (ACCORDION) ──────────────── */
+.prod-details {
+  border-top: 1px solid rgba(22,17,10,.07);
+  margin-top: .25rem;
+  padding-top: .5rem;
+}
+.prod-details > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  transition: color .2s;
+}
+.prod-details > summary::-webkit-details-marker { display: none; }
+.prod-details > summary::after { content: '+'; font-size: 1rem; font-weight: 400; transition: transform .2s; }
+.prod-details[open] > summary::after { content: '−'; }
+.prod-details > summary:hover { color: var(--forest); }
+.prod-details-body {
+  padding-top: .65rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.prod-comp-list {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.prod-comp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .73rem;
+  color: var(--coal-mid);
+}
+.prod-comp-row span:last-child { font-weight: 600; color: var(--coal); }
+.prod-npk {
+  display: flex;
+  gap: .3rem;
+  flex-wrap: wrap;
+  padding-top: .4rem;
+  border-top: 1px solid rgba(22,17,10,.06);
+}
+.prod-npk-item {
+  font-size: .67rem;
+  font-weight: 600;
+  background: rgba(22,17,10,.04);
+  border: 1px solid rgba(22,17,10,.09);
+  border-radius: 4px;
+  padding: .18rem .45rem;
+  color: var(--coal-mid);
+  white-space: nowrap;
+}
+
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════ */

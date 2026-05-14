@@ -835,11 +835,16 @@ ul { list-style: none; }
 .zg-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  gap: 0;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
+}
+.zg-col:first-child { padding-right: 2.5rem; }
+.zg-col + .zg-col {
+  padding-left: 2.5rem;
+  border-left: 1px solid rgba(255,255,255,.1);
 }
 .zg-col-head {
   font-family: var(--ff-head);
@@ -870,10 +875,14 @@ ul { list-style: none; }
 .zg-x     { color: #e07070; font-weight: 700; flex-shrink: 0; }
 .zg-check { color: var(--leaf); font-weight: 700; flex-shrink: 0; }
 
-.zg-cta {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+.zg-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: .75rem 1rem;
+  flex-wrap: wrap;
   border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 1.25rem;
 }
 .zg-prod-label {
   font-size: .75rem;
@@ -881,13 +890,13 @@ ul { list-style: none; }
   letter-spacing: .1em;
   text-transform: uppercase;
   color: rgba(245,237,218,.65);
-  margin-bottom: .75rem;
+  white-space: nowrap;
 }
 .zg-prods {
   display: flex;
   flex-wrap: wrap;
   gap: .4rem;
-  margin-bottom: 1rem;
+  flex: 1;
 }
 .zg-prods span {
   font-size: .8rem;
@@ -897,6 +906,7 @@ ul { list-style: none; }
   padding: .25rem .7rem;
   border-radius: 50px;
 }
+.zg-footer .btn-outline-light { margin-left: auto; white-space: nowrap; }
 
 /* ═══════════════════════════════════════════════════════════
    BUNDLES
@@ -2047,7 +2057,11 @@ ul { list-style: none; }
   }
   .zg-tabs::-webkit-scrollbar { display: none; }
   .zg-tab { flex-shrink: 0; font-size: .85rem; padding: .55rem 1.1rem; min-height: 44px; }
-  .zg-cols { grid-template-columns: 1fr; padding: 1.75rem 1.25rem; gap: 1.25rem; }
+  .zg-cols { grid-template-columns: 1fr; padding: 1.75rem 1.25rem; }
+  .zg-col:first-child { padding-right: 0; }
+  .zg-col + .zg-col { padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.25rem; }
+  .zg-footer { flex-direction: column; align-items: flex-start; }
+  .zg-footer .btn-outline-light { margin-left: 0; }
 
   .bundles          { padding: 4rem 1.25rem; }
   .bundle-grid      { grid-template-columns: 1fr; gap: 1rem; }

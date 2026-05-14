@@ -563,6 +563,13 @@ ul { list-style: none; }
   color: rgba(245,237,218,.75);
 }
 
+.pkohle-visuals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
 .pkohle-visual {
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -570,8 +577,19 @@ ul { list-style: none; }
 }
 .pkohle-visual img {
   width: 100%;
-  object-fit: cover;
-  max-height: 420px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+.pkohle-visual--wheel {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pkohle-visual--wheel img {
+  padding: .5rem;
 }
 .pkohle-visual-cap {
   position: absolute;
@@ -1162,6 +1180,19 @@ ul { list-style: none; }
 .kontakt-info-item a { transition: color .2s; }
 .kontakt-info-item a:hover { color: var(--leaf); }
 
+.kontakt-recipe {
+  margin-top: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  line-height: 0;
+}
+.kontakt-recipe img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ─── FORM ───────────────────────────────────────────────── */
 .kontakt-form {
   display: flex;
@@ -1331,6 +1362,7 @@ ul { list-style: none; }
 
   .pkohle           { padding: 4rem 1.25rem; background-attachment: scroll; }
   .pkohle-benefits  { grid-template-columns: 1fr 1fr; }
+  .pkohle-visuals   { grid-template-columns: 1fr; }
 
   .produkte         { padding: 4rem 1.25rem; }
   .prod-grid        { grid-template-columns: 1fr; gap: 1rem; }

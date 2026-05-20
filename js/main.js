@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('roi-next-1')?.addEventListener('click', () => {
       const selected = [...probCBs].filter((c) => c.checked).map((c) => c.value);
       if (!selected.length) {
-        if (probCount) { probCount.textContent = 'Bitte mindestens 1 Problem auswählen'; probCount.style.color = '#c0392b'; }
+        if (probCount) { probCount.textContent = 'Bitte mindestens 1 Herausforderung auswählen'; probCount.style.color = '#c0392b'; }
         return;
       }
       calcData.probs = selected;

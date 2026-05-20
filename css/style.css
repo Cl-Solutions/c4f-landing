@@ -347,7 +347,7 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(var(--nav-h) + 4rem) 2rem 2rem;
+  padding: calc(var(--nav-h) + 4rem) 2rem 9rem;
   overflow: hidden;
 }
 .hero-img {
@@ -1046,12 +1046,15 @@ ul { list-style: none; }
   padding-top: 1.25rem;
 }
 .zg-prod-label {
-  font-size: .78rem;
+  font-size: .8rem;
   font-weight: 700;
-  letter-spacing: .09em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--leaf);
+  color: rgba(245,237,218,.95);
   white-space: nowrap;
+  background: var(--leaf);
+  padding: .3rem .8rem;
+  border-radius: 50px;
 }
 .zg-prods {
   display: flex;
@@ -1060,20 +1063,20 @@ ul { list-style: none; }
   flex: 1;
 }
 .zg-prods a {
-  font-size: .82rem;
-  font-weight: 700;
-  color: var(--leaf);
-  background: rgba(61,138,46,.15);
-  border: 1px solid rgba(61,138,46,.4);
-  padding: .4rem 1rem;
+  font-size: .84rem;
+  font-weight: 600;
+  color: rgba(245,237,218,.92);
+  background: rgba(245,237,218,.1);
+  border: 1px solid rgba(245,237,218,.25);
+  padding: .42rem 1.05rem;
   border-radius: 50px;
   text-decoration: none;
   transition: background .15s, border-color .15s, color .15s;
   cursor: pointer;
 }
 .zg-prods a:hover {
-  background: rgba(61,138,46,.3);
-  border-color: rgba(61,138,46,.7);
+  background: var(--leaf);
+  border-color: var(--leaf);
   color: #fff;
 }
 .zg-footer .btn-outline-light { margin-left: auto; white-space: nowrap; }
@@ -1315,6 +1318,74 @@ ul { list-style: none; }
   margin-top: .5rem;
   text-transform: uppercase;
   letter-spacing: .06em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MITMACHEN – Terra Preta selbst machen
+   ═══════════════════════════════════════════════════════════ */
+.mitmach {
+  background: var(--cream);
+  padding: 6rem 2rem;
+}
+.mitmach-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.mitmach-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.mitmach-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.mitmach-step-num {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--leaf);
+  color: #fff;
+  font-family: var(--ff-head);
+  font-weight: 800;
+  font-size: .95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mitmach-step-text strong {
+  display: block;
+  font-weight: 700;
+  color: var(--coal);
+  margin-bottom: .2rem;
+}
+.mitmach-step-text span {
+  font-size: .9rem;
+  color: rgba(22,17,10,.6);
+  line-height: 1.5;
+}
+.mitmach-visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(22,17,10,.12);
+}
+.mitmach-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 768px) {
+  .mitmach-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════

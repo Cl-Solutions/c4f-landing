@@ -365,9 +365,9 @@ ul { list-style: none; }
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(22,17,10,.82) 0%,
-    rgba(22,17,10,.72) 50%,
-    rgba(22,17,10,.55) 100%
+    rgba(22,17,10,.75) 0%,
+    rgba(22,17,10,.60) 50%,
+    rgba(22,17,10,.30) 100%
   );
 }
 
@@ -856,7 +856,7 @@ ul { list-style: none; }
    ZIELGRUPPEN
    ═══════════════════════════════════════════════════════════ */
 .zielgruppen {
-  background: var(--coal-mid);
+  background: var(--coal-mid) url('../assets/images/erde-kohle.webp') center/cover no-repeat;
   padding: 7rem 2rem;
   position: relative;
   overflow: hidden;
@@ -865,7 +865,9 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 20% 80%, rgba(27,77,16,.2) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 80%, rgba(27,77,16,.25) 0%, transparent 60%),
+    rgba(14, 11, 6, 0.72);
   pointer-events: none;
 }
 

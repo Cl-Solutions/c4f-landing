@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.6 });
 
-  document.querySelectorAll('.hstat-n, .pb-num, .fact-n').forEach((el) => {
+  document.querySelectorAll('.hstat-n, .pk-fact-n').forEach((el) => {
     counterObserver.observe(el);
   });
 
@@ -225,7 +225,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── ROI-RECHNER ─────────────────────────────────────────────
+  // ─── STRATEGIE-RECHNER (vereinfacht: Wasser + CO₂ je Fläche) ──
+  const calcSection = document.getElementById('rechner');
+  if (calcSection) {
+    const lEl = document.getElementById('calc-l');
+    const bEl = document.getElementById('calc-b');
+    const areaEl = document.getElementById('calc-area');
+    const waterEl = document.getElementById('calc-water');
+    const co2El = document.getElementById('calc-co2');
+    const presets = calcSection.querySelectorAll('.calc-preset');
+
+    // Basis: 1 kg aktivierte Pflanzenkohle speichert bis zu 5 l Wasser
+    // und bindet 2,5 kg CO₂. Einsatzmenge je m² über Presets.
+    const WATER_PER_KG = 5;   // Liter
+    const CO2_PER_KG = 2.5;   // kg
+    let kgPerM2 = 1;
+
+    const fmt = (n, dec) => n.toLocaleString('de-DE', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+
+    const recalc = () => {
+      const l = parseFloat(lEl?.value) || 0;
+      const b = parseFloat(bEl?.value) || 0;
+      const area = l * b;
+      if (areaEl) areaEl.textContent = area > 0 ? `${fmt(area, area % 1 ? 1 : 0)} m²` : '– m²';
+      if (area > 0) {
+        const kg = area * kgPerM2;
+        if (waterEl) waterEl.textContent = `${fmt(Math.round(kg * WATER_PER_KG), 0)} L`;
+        if (co2El) co2El.textContent = `${fmt(Math.round(kg * CO2_PER_KG), 0)} kg`;
+      } else {
+        if (waterEl) waterEl.textContent = '– L';
+        if (co2El) co2El.textContent = '– kg';
+      }
+    };
+
+    [lEl, bEl].forEach((el) => el?.addEventListener('input', recalc));
+    presets.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        presets.forEach((b) => { b.classList.remove('calc-preset--active'); b.setAttribute('aria-checked', 'false'); });
+        btn.classList.add('calc-preset--active');
+        btn.setAttribute('aria-checked', 'true');
+        kgPerM2 = parseFloat(btn.dataset.kg) || 1;
+        recalc();
+      });
+    });
+  }
+
+  // ─── BACK TO TOP ─────────────────────────────────────────────
+  const toTop = document.getElementById('to-top');
+  if (toTop) {
+    toTop.hidden = false;
+    const toggleTop = () => toTop.classList.toggle('is-visible', window.scrollY > 600);
+    toggleTop();
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ─── (Legacy ROI-Rechner – nur aktiv, falls vorhanden) ───────
   const ROI_CATALOG = {
     pflanzenkohle: { name: 'Pflanzenkohle',           desc: 'Speichert Wasser & Nährstoffe, bindet dauerhaft CO₂.',       dosierung: 50,  pricePerL: 2.59 },
     terrapreta:    { name: 'Terra Preta Konzentrat',  desc: 'Aktives Bodenleben und dauerhafter Humusaufbau.',             dosierung: 10,  pricePerL: 2.99 },

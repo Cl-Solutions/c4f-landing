@@ -435,6 +435,16 @@ ul { list-style: none; }
   line-height: 1.1;
   letter-spacing: -.02em;
 }
+.bisu {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: .4em;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: none;
+  opacity: .8;
+  margin-bottom: .15em;
+}
 .hstat-l {
   font-size: .73rem;
   font-weight: 500;

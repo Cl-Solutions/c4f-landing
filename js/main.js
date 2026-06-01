@@ -33,20 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── COUNTER ANIMATION ────────────────────────────────────
   function parseCounter(text) {
     const t = text.trim();
-    const m = t.match(/^([\d,.]+)\s*(.*)$/);
+    // Optional non-numeric prefix (e.g. "bis zu" from a .bisu span) is preserved.
+    const m = t.match(/^(\D*?)([\d.,]+)\s*(.*)$/);
     if (!m) return null;
-    const raw = parseFloat(m[1].replace(',', '.'));
+    const raw = parseFloat(m[2].replace(',', '.'));
     if (isNaN(raw)) return null;
-    const unit = m[2];
-    const useComma = m[1].includes(',');
-    const decimals = useComma ? (m[1].split(',')[1] || '').length : 0;
-    return { raw, unit, useComma, decimals, original: t };
+    const useComma = m[2].includes(',');
+    const decimals = useComma ? (m[2].split(',')[1] || '').length : 0;
+    return { raw, unit: m[3], useComma, decimals, numOriginal: t.slice(m[1].length) };
   }
 
   function runCounter(el, data) {
-    const { raw, unit, useComma, decimals, original } = data;
+    const { raw, unit, useComma, decimals, numOriginal } = data;
     const duration = prefersReducedMotion ? 0 : 1100;
     const start = performance.now();
+    const prefixSpan = el.querySelector('.bisu');
+
+    // Write the number text while keeping any prefix span intact.
+    function write(str) {
+      if (prefixSpan) {
+        while (prefixSpan.nextSibling) el.removeChild(prefixSpan.nextSibling);
+        el.appendChild(document.createTextNode(str));
+      } else {
+        el.textContent = str;
+      }
+    }
 
     function tick(now) {
       const t = Math.min((now - start) / duration, 1);
@@ -55,9 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let display = decimals > 0
         ? current.toFixed(decimals).replace('.', useComma ? ',' : '.')
         : Math.round(current).toString();
-      el.textContent = unit ? `${display} ${unit}` : display;
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = original;
+      if (t < 1) { write(unit ? `${display} ${unit}` : display); requestAnimationFrame(tick); }
+      else write(numOriginal);
     }
     requestAnimationFrame(tick);
   }

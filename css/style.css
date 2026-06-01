@@ -2798,7 +2798,7 @@ ul { list-style: none; }
 .pt { background: var(--cream); padding: 6.5rem 0 7rem; }
 .pt-head { max-width: 760px; margin-bottom: 3.2rem; }
 .pt-sub { font-size: 1.15rem; line-height: 1.65; color: #2a2218; margin-top: 1.2rem; }
-.pt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.pt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .pt-card { background: #fff; border: 1px solid var(--cream-dark); border-radius: var(--radius); padding: 2.2rem 2rem 2.4rem; display: flex; flex-direction: column; }
 .pt-card--action { background: linear-gradient(165deg, var(--forest), #14380c); border-color: transparent; }
 .pt-icon { width: 46px; height: 46px; color: var(--forest); margin-bottom: 1.2rem; }
@@ -2814,6 +2814,17 @@ ul { list-style: none; }
 .pt-card-link:hover { border-color: var(--forest); }
 .pt-card--action .pt-card-link { color: var(--sand); }
 .pt-card--action .pt-card-link:hover { border-color: var(--sand); }
+
+/* Feature-Banner: Aktion 100 Bäume */
+.pt-feature { margin-top: 1.5rem; display: grid; grid-template-columns: 1.05fr 1fr; border-radius: var(--radius); overflow: hidden; background: linear-gradient(165deg, var(--forest), #14380c); border: 1px solid transparent; }
+.pt-feature-media { position: relative; min-height: 320px; }
+.pt-feature-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pt-feature-body { padding: 3rem 3rem 3.2rem; display: flex; flex-direction: column; justify-content: center; }
+.pt-feature-kicker { font-family: var(--ff-body); font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sand); margin-bottom: .9rem; }
+.pt-feature-h { font-family: var(--ff-head); font-size: 1.8rem; font-weight: 700; color: var(--cream-text); letter-spacing: -.01em; margin-bottom: .9rem; }
+.pt-feature-d { font-size: 1.05rem; line-height: 1.6; color: rgba(245,237,218,.84); margin-bottom: 1.4rem; }
+.pt-feature-link { align-self: flex-start; font-family: var(--ff-body); font-size: 1rem; font-weight: 700; color: var(--sand); text-decoration: none; border-bottom: 2px solid transparent; transition: border-color .2s; }
+.pt-feature-link:hover { border-color: var(--sand); }
 
 /* ── ⑥ GRÜNER BALKEN ──────────────────────────────────────── */
 .greenbar { background: var(--forest); color: var(--cream-text); padding: 1.1rem 2rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: .7rem; flex-wrap: wrap; font-family: var(--ff-body); font-size: 1rem; }
@@ -2835,6 +2846,9 @@ ul { list-style: none; }
   .pr-row { grid-template-columns: 1fr 1fr; }
   .pr-card--combo { grid-column: 1 / -1; }
   .pt-grid { grid-template-columns: 1fr; }
+  .pt-feature { grid-template-columns: 1fr; }
+  .pt-feature-media { min-height: 0; aspect-ratio: 16 / 9; }
+  .pt-feature-media img { position: static; }
 }
 @media (max-width: 768px) {
   .nav-logo-img { height: 46px; }
@@ -2850,6 +2864,8 @@ ul { list-style: none; }
   .calc-res-n { font-size: 2.2rem; }
   .calc-area { gap: .6rem; }
   .calc-input { width: 80px; }
+  .pt-feature-body { padding: 2rem 1.6rem 2.2rem; }
+  .pt-feature-h { font-size: 1.5rem; }
 }
 @media (max-width: 480px) {
   .calc-area { justify-content: space-between; }

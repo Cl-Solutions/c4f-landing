@@ -2771,6 +2771,8 @@ ul { list-style: none; }
 .pr-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(22,17,10,.14); }
 .pr-img { background: linear-gradient(160deg, #f7f1e2, #ece0c4); aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; padding: 1.4rem; }
 .pr-img img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.pr-img--photo { padding: 0; }
+.pr-img--photo img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 .pr-body { padding: 1.6rem 1.6rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
 .pr-avail { display: inline-block; align-self: flex-start; font-family: var(--ff-body); font-size: .78rem; font-weight: 700; letter-spacing: .02em; color: var(--forest); background: rgba(27,77,16,.1); padding: .32rem .7rem; border-radius: 100px; margin-bottom: .9rem; }
 .pr-name { font-family: var(--ff-head); font-size: 1.4rem; font-weight: 700; color: var(--coal); margin-bottom: .35rem; letter-spacing: -.01em; }

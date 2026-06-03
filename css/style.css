@@ -3070,7 +3070,7 @@ ul { list-style: none; }
 .ab-carousel-section { background: var(--cream); padding: 4rem 0 5rem; }
 .ab-inner { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
 .ab-carousel { position: relative; }
-.ab-carousel-frame { overflow: hidden; border-radius: var(--radius); }
+.ab-carousel-frame { overflow: hidden; border-radius: var(--radius); transition: height .55s var(--ease-out-quart); }
 .ab-carousel-track { display: flex; align-items: flex-start; transition: transform .55s var(--ease-out-quart); }
 .ab-slide { flex: 0 0 100%; min-width: 0; padding: 0 .25rem; display: flex; flex-direction: column; gap: 1.2rem; }
 .ab-card-h { font-family: var(--ff-head); font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 800; line-height: 1.25; letter-spacing: -.015em; color: var(--coal); margin: 0; max-width: 36ch; }

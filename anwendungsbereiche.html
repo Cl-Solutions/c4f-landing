@@ -343,6 +343,14 @@
       let idx = 0;
       total.textContent = slides.length;
 
+      const frame = root.querySelector('.ab-carousel-frame');
+
+      const updateFrameHeight = () => {
+        const active = slides[idx];
+        if (!frame || !active) return;
+        frame.style.height = active.offsetHeight + 'px';
+      };
+
       const updateNavPos = () => {
         const img = root.querySelector('.ab-slide.is-active .ab-card-img');
         if (!img) return;
@@ -355,15 +363,20 @@
         });
       };
 
+      const updateAll = () => {
+        updateFrameHeight();
+        updateNavPos();
+      };
+
       const go = (i) => {
         idx = (i + slides.length) % slides.length;
         slides.forEach((s, n) => s.classList.toggle('is-active', n === idx));
         dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
         current.textContent = idx + 1;
         track.style.transform = `translateX(-${idx * 100}%)`;
-        // After transform settles, reposition nav buttons
-        requestAnimationFrame(updateNavPos);
-        setTimeout(updateNavPos, 600);
+        // After transform settles, reposition nav buttons + frame height
+        requestAnimationFrame(updateAll);
+        setTimeout(updateAll, 600);
       };
 
       prev.addEventListener('click', () => go(idx - 1));
@@ -385,20 +398,20 @@
         touchStart = null;
       });
 
-      // Reposition arrows when images load and on resize
+      // Reposition arrows + height when images load and on resize
       slides.forEach((s) => {
         const img = s.querySelector('img');
-        if (img && !img.complete) img.addEventListener('load', updateNavPos);
+        if (img && !img.complete) img.addEventListener('load', updateAll);
       });
       let resizeT;
       window.addEventListener('resize', () => {
         clearTimeout(resizeT);
-        resizeT = setTimeout(updateNavPos, 100);
+        resizeT = setTimeout(updateAll, 100);
       });
 
       go(0);
-      requestAnimationFrame(updateNavPos);
-      setTimeout(updateNavPos, 800);
+      requestAnimationFrame(updateAll);
+      setTimeout(updateAll, 800);
     })();
   </script>
 </body>

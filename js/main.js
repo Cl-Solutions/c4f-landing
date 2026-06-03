@@ -94,17 +94,45 @@ document.addEventListener('DOMContentLoaded', () => {
       ticker.className = 'partners-ticker';
       const track = document.createElement('div');
       track.className = 'partners-track';
-
-      // Two full copies for seamless infinite scroll
-      [0, 1].forEach(() => {
-        spans.forEach((s) => {
-          const clone = s.cloneNode(true);
-          track.appendChild(clone);
-        });
-      });
-
+      const addSet = () => spans.forEach((s) => track.appendChild(s.cloneNode(true)));
+      // Two base copies, then we measure
+      addSet();
+      addSet();
       ticker.appendChild(track);
       partnersRow.replaceWith(ticker);
+
+      // Fill until ONE set is at least as wide as the visible container
+      // (otherwise the loop reveals a gap on the right after each cycle).
+      // Wait two frames so layout has settled before measuring.
+      const buildMarquee = () => {
+        const containerW = ticker.clientWidth;
+        if (!containerW) { requestAnimationFrame(buildMarquee); return; }
+        let setCount = track.childElementCount / spans.length;
+        const setWidth = track.scrollWidth / setCount; // constant – each set has the same items
+        // We need (setCount - 1) * setWidth >= containerW + buffer so that after
+        // translating one set to the left, the remaining sets still fill the container.
+        let safety = 0;
+        while ((setCount - 1) * setWidth < containerW + 60 && safety < 20) {
+          addSet();
+          setCount += 1;
+          safety += 1;
+        }
+        const speed = 60; // px per second
+        track.style.setProperty('--marquee-shift', `-${setWidth}px`);
+        track.style.animationDuration = `${Math.max(setWidth / speed, 14)}s`;
+      };
+      // Run after layout via rAF, with setTimeout fallback for inactive tabs
+      const tryBuild = () => buildMarquee();
+      requestAnimationFrame(() => requestAnimationFrame(tryBuild));
+      setTimeout(tryBuild, 80);
+      // Re-measure once fonts/images may have resized things
+      setTimeout(tryBuild, 600);
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildMarquee, 200);
+      });
     }
   }
 

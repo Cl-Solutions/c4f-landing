@@ -183,5 +183,44 @@
       <div class="footer-copy">© 2026 Carbon4Future</div>
     </div>
   </footer>
+
+  <script>
+    // ─── Lightbox für Terra-Preta-Rezept-Infografik ───
+    (() => {
+      const targets = document.querySelectorAll('.sw-recipe-img');
+      if (!targets.length) return;
+      const lb = document.createElement('div');
+      lb.className = 'zg-lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.innerHTML = '<img class="zg-lightbox-img" alt=""><button class="zg-lightbox-close" aria-label="Schließen">✕</button>';
+      document.body.appendChild(lb);
+      const lbImg = lb.querySelector('.zg-lightbox-img');
+      const open = (src, alt) => {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+      targets.forEach((c) => {
+        const img = c.querySelector('img');
+        if (!img) return;
+        c.style.cursor = 'zoom-in';
+        c.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+        const hint = document.createElement('span');
+        hint.className = 'ab-zoom-hint';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = '⤢ Vergrößern';
+        c.appendChild(hint);
+      });
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      lb.querySelector('.zg-lightbox-close').addEventListener('click', close);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 </body>
 </html>

@@ -290,6 +290,46 @@
   </footer>
 
   <script>
+    // ─── Lightbox für Infografiken ───
+    (() => {
+      const targets = document.querySelectorAll('.ab-card-img');
+      if (!targets.length) return;
+      const lb = document.createElement('div');
+      lb.className = 'zg-lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.innerHTML = '<img class="zg-lightbox-img" alt=""><button class="zg-lightbox-close" aria-label="Schließen">✕</button>';
+      document.body.appendChild(lb);
+      const lbImg = lb.querySelector('.zg-lightbox-img');
+      const open = (src, alt) => {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+      targets.forEach((c) => {
+        const img = c.querySelector('img');
+        if (!img) return;
+        c.style.cursor = 'zoom-in';
+        c.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+        // Tap-Hint sichtbar machen
+        const hint = document.createElement('span');
+        hint.className = 'ab-zoom-hint';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = '⤢ Vergrößern';
+        c.appendChild(hint);
+      });
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      lb.querySelector('.zg-lightbox-close').addEventListener('click', close);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+
+  <script>
     (() => {
       const root = document.getElementById('ab-carousel');
       if (!root) return;

@@ -8,7 +8,9 @@
   <meta property="og:description" content="Aktivierte Pflanzenkohle für gesunde Pflanzen, lebendige Böden und nachhaltiges Wachstum. Ohne Chemie. Ohne Torf.">
   <meta property="og:type" content="website">
   <title>Carbon4Future – Die Kraft der Pflanzenkohle</title>
-  <link rel="preload" as="image" href="assets/images/garden-compare-wide.webp" type="image/webp">
+  <link rel="preload" as="image"
+        imagesrcset="assets/images/garden-compare.webp 1024w, assets/images/garden-compare-wide.webp 1920w"
+        imagesizes="100vw" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -49,7 +51,10 @@
 
   <!-- ═══════════════════════════════════════════ HERO ═══ -->
   <section class="hero" id="main" aria-label="Einleitung">
-    <div class="hero-img" aria-hidden="true" style="background-image:url('assets/images/garden-compare-wide.webp')"></div>
+    <picture class="hero-img" aria-hidden="true">
+      <source media="(max-width: 768px)" type="image/webp" srcset="assets/images/garden-compare.webp">
+      <img src="assets/images/garden-compare-wide.webp" alt="" fetchpriority="high">
+    </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-content">

@@ -171,47 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // ─── ZIELGRUPPEN TABS (with slide animation) ───────────────
-  const tabs = document.querySelectorAll('.zg-tab');
-  const panels = document.querySelectorAll('.zg-panel');
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetId = tab.getAttribute('aria-controls');
-      const targetPanel = document.getElementById(targetId);
-
-      tabs.forEach((t) => {
-        t.classList.remove('zg-tab--active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      panels.forEach((p) => {
-        p.classList.remove('zg-panel--active', 'zg-panel--entering');
-        p.hidden = true;
-      });
-
-      tab.classList.add('zg-tab--active');
-      tab.setAttribute('aria-selected', 'true');
-      if (targetPanel) {
-        targetPanel.classList.add('zg-panel--active');
-        targetPanel.hidden = false;
-        // Trigger enter animation on next frame
-        requestAnimationFrame(() => {
-          targetPanel.classList.add('zg-panel--entering');
-        });
-      }
-    });
-
-    // Keyboard navigation
-    tab.addEventListener('keydown', (e) => {
-      const tabList = [...tabs];
-      const idx = tabList.indexOf(tab);
-      let next = -1;
-      if (e.key === 'ArrowRight') next = (idx + 1) % tabList.length;
-      if (e.key === 'ArrowLeft')  next = (idx - 1 + tabList.length) % tabList.length;
-      if (next >= 0) { tabList[next].focus(); tabList[next].click(); }
-    });
-  });
-
   // ─── CONTACT FORM (with field shake) ──────────────────────
   const form = document.getElementById('kontakt-form');
   const formSuccess = document.getElementById('form-success');
@@ -579,53 +538,5 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
-
-  // ─── ZIELGRUPPEN IMAGE LIGHTBOX ───────────────────────────
-  const lb = document.createElement('div');
-  lb.className = 'zg-lightbox';
-  lb.setAttribute('role', 'dialog');
-  lb.setAttribute('aria-modal', 'true');
-  lb.innerHTML = '<img class="zg-lightbox-img" alt=""><button class="zg-lightbox-close" aria-label="Schließen">✕</button>';
-  document.body.appendChild(lb);
-
-  const lbImg = lb.querySelector('.zg-lightbox-img');
-
-  function openLightbox(src, alt) {
-    lbImg.src = src;
-    lbImg.alt = alt;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.zg-visual, .kontakt-recipe').forEach(container => {
-    const img = container.querySelector('img');
-    if (!img) return;
-    img.addEventListener('click', () => openLightbox(img.src, img.alt));
-    const hint = document.createElement('p');
-    hint.className = 'zoom-hint';
-    hint.setAttribute('aria-hidden', 'true');
-    hint.textContent = '↗ Vergrößern';
-    hint.addEventListener('click', () => openLightbox(img.src, img.alt));
-    container.insertAdjacentElement('afterend', hint);
-  });
-
-  document.querySelectorAll('.prod-img-wrap').forEach(wrap => {
-    const img = wrap.querySelector('img');
-    if (!img) return;
-    const btn = document.createElement('button');
-    btn.className = 'prod-zoom-btn';
-    btn.setAttribute('aria-label', 'Vergrößern');
-    btn.textContent = '⤢';
-    btn.addEventListener('click', () => openLightbox(img.src, img.alt));
-    wrap.appendChild(btn);
-  });
-
-  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-  lb.querySelector('.zg-lightbox-close').addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 });

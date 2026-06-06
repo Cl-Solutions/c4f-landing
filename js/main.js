@@ -222,49 +222,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── STRATEGIE-RECHNER (vereinfacht: Wasser + CO₂ je Fläche) ──
+  // ─── STRATEGIE-RECHNER (Produkt Bodenaktiv: 20 % Pflanzenkohle) ──
   const calcSection = document.getElementById('rechner');
   if (calcSection) {
-    const lEl = document.getElementById('calc-l');
-    const bEl = document.getElementById('calc-b');
-    const areaEl = document.getElementById('calc-area');
     const waterEl = document.getElementById('calc-water');
     const co2El = document.getElementById('calc-co2');
     const presets = calcSection.querySelectorAll('.calc-preset');
 
-    // Basis: 1 kg aktivierte Pflanzenkohle speichert bis zu 5 l Wasser
-    // und bindet 2,5 kg CO₂. Einsatzmenge je m² über Presets.
-    const WATER_PER_KG = 5;   // Liter
-    const CO2_PER_KG = 2.5;   // kg
-    let kgPerM2 = 1;
+    // 1 l Bodenaktiv ≈ 0,65 kg (Schüttdichte), davon 20 % aktivierte Pflanzenkohle
+    // 1 kg aktivierte Pflanzenkohle speichert bis zu 5 l Wasser und bindet 2,5 kg CO₂
+    const KG_PER_LITER = 0.65;
+    const PK_SHARE     = 0.20;
+    const WATER_PER_KG = 5;    // Liter
+    const CO2_PER_KG   = 2.5;  // kg
 
     const fmt = (n, dec) => n.toLocaleString('de-DE', { minimumFractionDigits: dec, maximumFractionDigits: dec });
 
-    const recalc = () => {
-      const l = parseFloat(lEl?.value) || 0;
-      const b = parseFloat(bEl?.value) || 0;
-      const area = l * b;
-      if (areaEl) areaEl.textContent = area > 0 ? `${fmt(area, area % 1 ? 1 : 0)} m²` : '– m²';
-      if (area > 0) {
-        const kg = area * kgPerM2;
-        if (waterEl) waterEl.textContent = `${fmt(Math.round(kg * WATER_PER_KG), 0)} L`;
-        if (co2El) co2El.textContent = `${fmt(Math.round(kg * CO2_PER_KG), 0)} kg`;
-      } else {
-        if (waterEl) waterEl.textContent = '– L';
-        if (co2El) co2El.textContent = '– kg';
-      }
+    const recalc = (liter) => {
+      const pkKg = liter * KG_PER_LITER * PK_SHARE;
+      const water = pkKg * WATER_PER_KG;
+      const co2   = pkKg * CO2_PER_KG;
+      if (waterEl) waterEl.textContent = `${fmt(water, 1)} L`;
+      if (co2El)   co2El.textContent   = `${fmt(co2,   1)} kg`;
     };
 
-    [lEl, bEl].forEach((el) => el?.addEventListener('input', recalc));
     presets.forEach((btn) => {
       btn.addEventListener('click', () => {
         presets.forEach((b) => { b.classList.remove('calc-preset--active'); b.setAttribute('aria-checked', 'false'); });
         btn.classList.add('calc-preset--active');
         btn.setAttribute('aria-checked', 'true');
-        kgPerM2 = parseFloat(btn.dataset.kg) || 1;
-        recalc();
+        recalc(parseFloat(btn.dataset.liter) || 5);
       });
     });
+
+    // Default: aktives Preset (5 l) anzeigen
+    const active = calcSection.querySelector('.calc-preset--active');
+    recalc(parseFloat(active?.dataset.liter) || 5);
   }
 
   // ─── BACK TO TOP ─────────────────────────────────────────────

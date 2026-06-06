@@ -14,6 +14,9 @@
   <!-- FILM-GRAIN TEXTUR (global) -->
   <div class="grain-overlay" aria-hidden="true"></div>
 
+  <!-- Floating Zurück-Button (erscheint beim Scrollen) -->
+  <a href="index.html#partner" class="sub-back-fab" id="sub-back-fab">← Zurück zu Partner</a>
+
   <nav class="nav" aria-label="Hauptnavigation">
     <a href="index.html" class="nav-logo" aria-label="Carbon4Future – zur Startseite">
       <picture>
@@ -186,6 +189,17 @@
       <div class="footer-copy">© 2026 Carbon4Future</div>
     </div>
   </footer>
+
+  <script>
+    // ─── Floating-Zurück-Button beim Scrollen anzeigen ───
+    (() => {
+      const fab = document.getElementById('sub-back-fab');
+      if (!fab) return;
+      const toggle = () => fab.classList.toggle('is-visible', window.scrollY > 300);
+      toggle();
+      window.addEventListener('scroll', toggle, { passive: true });
+    })();
+  </script>
 
   <script>
     // ─── Lightbox für Terra-Preta-Rezept-Infografik ───

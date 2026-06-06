@@ -88,12 +88,22 @@
     <a class="hero-partners" href="#partner" aria-label="Anwendungsbereiche und Partner ansehen">
       <div class="partners-label">Geeignet für</div>
       <div class="partners-row">
-        <span>GaLaBau</span>
+        <span>Agrarhandel</span>
+        <span>Bio-Anbau &amp; Hofläden</span>
+        <span>Dachbegrüner</span>
+        <span>Erwerbsgartenbau</span>
+        <span>GaLa-Bau</span>
+        <span>Gartencenter &amp; Baumärkte</span>
+        <span>Golfanlagen</span>
+        <span>Imker</span>
+        <span>Kleingärtner</span>
         <span>Kommunen</span>
-        <span>Erden- &amp; Humuswerke</span>
-        <span>Gärtnereien</span>
-        <span>Handel</span>
-        <span>Hobbygärtner</span>
+        <span>Landfrauen</span>
+        <span>Lebensmittelhandel</span>
+        <span>Obst- &amp; Gartenbauvereine</span>
+        <span>Parkanlagen</span>
+        <span>Sportvereine</span>
+        <span>Weingüter</span>
       </div>
     </a>
   </section>
@@ -281,34 +291,15 @@
       </div>
 
       <div class="calc-card reveal reveal-d3">
-        <!-- Eingabe -->
-        <div class="calc-inputs">
-          <div class="calc-area">
-            <p class="calc-cta-label"><span class="calc-cta-arrow" aria-hidden="true">↓</span> Trag hier die Maße deiner Fläche ein</p>
-            <div class="calc-area-row">
-              <div class="calc-field">
-                <label class="calc-label" for="calc-l">Länge</label>
-                <div class="calc-inwrap"><input class="calc-input" id="calc-l" type="number" min="0.1" step="0.1" placeholder="4"><span class="calc-unit">m</span></div>
-              </div>
-              <div class="calc-x" aria-hidden="true">×</div>
-              <div class="calc-field">
-                <label class="calc-label" for="calc-b">Breite</label>
-                <div class="calc-inwrap"><input class="calc-input" id="calc-b" type="number" min="0.1" step="0.1" placeholder="2"><span class="calc-unit">m</span></div>
-              </div>
-              <div class="calc-eq" aria-hidden="true">=</div>
-              <div class="calc-field">
-                <span class="calc-label">Fläche</span>
-                <div class="calc-area-disp" id="calc-area">– m²</div>
-              </div>
-            </div>
-          </div>
+        <p class="calc-explain">Wir nehmen das Produkt <strong>Bodenaktiv</strong> als Beispiel: Es enthält <strong>20 % aktivierte Pflanzenkohle</strong> und ist in drei Größen erhältlich. Wähl deine Gebinde-Größe und sieh, wie viel Wasser und CO₂ damit gebunden werden.</p>
 
+        <div class="calc-inputs">
           <div class="calc-intensity">
-            <span class="calc-label">Einsatz von Pflanzenkohle</span>
-            <div class="calc-presets" role="radiogroup" aria-label="Einsatzmenge">
-              <button class="calc-preset" data-kg="0.5" role="radio" aria-checked="false">Regeneration<em>0,5 kg/m²</em></button>
-              <button class="calc-preset calc-preset--active" data-kg="1" role="radio" aria-checked="true">Pflege &amp; Erhaltung<em>1 kg/m²</em></button>
-              <button class="calc-preset" data-kg="2" role="radio" aria-checked="false">Bodenaufbau<em>2 kg/m²</em></button>
+            <p class="calc-cta-label"><span class="calc-cta-arrow" aria-hidden="true">↓</span> Wähl deine Bodenaktiv-Größe</p>
+            <div class="calc-presets" role="radiogroup" aria-label="Bodenaktiv-Gebinde">
+              <button class="calc-preset" data-liter="2" role="radio" aria-checked="false">Regeneration<em>2 l Bodenaktiv</em></button>
+              <button class="calc-preset calc-preset--active" data-liter="5" role="radio" aria-checked="true">Pflege &amp; Erhaltung<em>5 l Bodenaktiv</em></button>
+              <button class="calc-preset" data-liter="10" role="radio" aria-checked="false">Bodenaufbau<em>10 l Bodenaktiv</em></button>
             </div>
           </div>
         </div>
@@ -319,19 +310,19 @@
             <div class="calc-res-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 0 7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/></svg>
             </div>
-            <div class="calc-res-n" id="calc-water">– L</div>
+            <div class="calc-res-n" id="calc-water">3,3 L</div>
             <div class="calc-res-l">Wasser zusätzlich speicherbar</div>
           </div>
           <div class="calc-result calc-result--co2">
             <div class="calc-res-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
             </div>
-            <div class="calc-res-n" id="calc-co2">– kg</div>
+            <div class="calc-res-n" id="calc-co2">1,6 kg</div>
             <div class="calc-res-l">CO₂ dauerhaft gebunden</div>
           </div>
         </div>
 
-        <p class="calc-note">Planungswert auf Basis: 1 kg aktivierte Pflanzenkohle speichert bis zu 5 l Wasser und bindet bis zu 2,5 kg CO₂. Tatsächliche Werte hängen von Boden, Anwendung und Produkt ab.</p>
+        <p class="calc-note">Planungswert auf Basis: 1 l Bodenaktiv ≈ 0,65 kg, davon 20 % aktivierte Pflanzenkohle. 1 kg aktivierte Pflanzenkohle speichert bis zu 5 l Wasser und bindet bis zu 2,5 kg CO₂. Tatsächliche Werte hängen von <strong>Bodenqualität</strong>, Anwendung und Produkt ab.</p>
 
         <div class="calc-cta">
           <a href="#kontakt" class="btn-primary">Passende Strategie anfragen →</a>
@@ -357,8 +348,8 @@
             </div>
             <span class="pt-card-tag">Infografik-Galerie</span>
           </div>
-          <h3 class="pt-card-h">Handel &amp; Vertrieb – Anwendungsbereiche durchklicken</h3>
-          <p class="pt-card-d">Vom Hochbeet bis zum Stadtbaum: Für jeden Einsatzbereich eine eigene Infografik. Klick dich durch – und sieh sofort, was die Pflanzenkohle konkret leistet.</p>
+          <h3 class="pt-card-h">Händler, Projektierer, Endverbraucher – Anwendungsbereiche durchklicken</h3>
+          <p class="pt-card-d">Vom Hochbeet bis zum Stadtbaum: Für jeden Einsatzbereich eine eigene Infografik. Klick dich durch – und sieh sofort, was die aktivierte Pflanzenkohle konkret leistet.</p>
           <div class="pt-card-thumbs" aria-hidden="true">
             <picture><source type="image/webp" srcset="assets/images/zg-galabau.webp"><img src="assets/images/zg-galabau.png" alt="" loading="lazy"></picture>
             <picture><source type="image/webp" srcset="assets/images/zg-schwammstadt.webp"><img src="assets/images/zg-schwammstadt.png" alt="" loading="lazy"></picture>

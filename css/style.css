@@ -1385,21 +1385,14 @@ ul { list-style: none; }
 .calc-intro { font-size: 1.25rem; line-height: 1.6; color: rgba(245,237,218,.82); margin-top: 1.2rem; }
 .calc-card { background: var(--coal-mid); border: 1px solid rgba(245,237,218,.1); border-radius: var(--radius-lg); padding: 2.1rem 2.3rem; margin-top: 2.6rem; max-width: 1080px; }
 
-.calc-inputs { display: flex; flex-direction: column; gap: 1.7rem; }
-.calc-area { display: flex; flex-direction: column; gap: .9rem; }
+.calc-explain { font-size: 1.05rem; line-height: 1.65; color: rgba(245,237,218,.82); margin: 0 0 1.8rem; max-width: 65ch; }
+.calc-explain strong { color: var(--cream-text); font-weight: 700; }
+.calc-inputs { display: flex; flex-direction: column; gap: 1.2rem; }
 .calc-cta-label { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--ff-head); font-size: 1.15rem; font-weight: 800; color: var(--sand); margin: 0; letter-spacing: -.01em; padding: .55rem 1.1rem; background: rgba(212,188,136,.12); border: 1px dashed rgba(212,188,136,.5); border-radius: 999px; }
 .calc-cta-arrow { display: inline-block; font-size: 1.25rem; line-height: 1; animation: cta-bounce 1.6s var(--ease-out-quart) infinite; }
 @keyframes cta-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 @media (prefers-reduced-motion: reduce) { .calc-cta-arrow { animation: none; } }
-.calc-area-row { display: flex; align-items: flex-end; gap: .8rem; flex-wrap: wrap; }
-.calc-field { display: flex; flex-direction: column; gap: .5rem; }
 .calc-label { font-family: var(--ff-body); font-size: .85rem; font-weight: 600; letter-spacing: .02em; color: var(--sand); }
-.calc-inwrap { display: flex; align-items: center; background: rgba(245,237,218,.06); border: 1px solid rgba(245,237,218,.18); border-radius: var(--radius-sm); overflow: hidden; }
-.calc-input { width: 84px; background: none; border: none; padding: .85rem 1rem; font-family: var(--ff-body); font-size: 1.1rem; color: var(--cream-text); outline: none; min-height: 44px; }
-.calc-input::placeholder { color: rgba(245,237,218,.35); }
-.calc-unit { padding: 0 .85rem; font-size: .95rem; color: rgba(245,237,218,.55); }
-.calc-x, .calc-eq { font-family: var(--ff-head); font-size: 1.4rem; color: var(--leaf); padding-bottom: .55rem; }
-.calc-area-disp { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 800; color: var(--cream-text); padding: .5rem 0; min-width: 90px; }
 
 .calc-intensity { display: flex; flex-direction: column; gap: .7rem; }
 .calc-presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
@@ -1530,15 +1523,11 @@ ul { list-style: none; }
   .calc-cta-arrow { font-size: 1.05rem; }
   .calc-results { grid-template-columns: 1fr; }
   .calc-res-n { font-size: 2.2rem; }
-  .calc-area-row { gap: .6rem; }
-  .calc-input { width: 80px; }
+  .calc-explain { font-size: .98rem; }
   .pt-feature-body { padding: 2rem 1.6rem 2.2rem; }
   .pt-feature-h { font-size: 1.5rem; }
 }
 @media (max-width: 480px) {
-  .calc-area-row { justify-content: space-between; }
-  .calc-field { flex: 1; min-width: 0; }
-  .calc-input { width: 100%; }
   .to-top { bottom: 1rem; right: 1rem; }
 }
 
@@ -1655,8 +1644,9 @@ ul { list-style: none; }
 @media (max-width: 768px) { .ab-zoom-hint { font-size: .72rem; padding: .3rem .65rem; right: .5rem; bottom: .5rem; } }
 .sw-recipe-img { position: relative; }
 .sw-recipe-img .ab-zoom-hint { right: 1rem; bottom: 1rem; }
-.ab-card-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: .5rem; }
+.ab-card-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .ab-card-tags li { display: inline-flex; align-items: center; flex: 0 0 auto; font-size: .9rem; font-weight: 600; line-height: 1.3; color: var(--forest); background: rgba(27,77,16,.08); border: 1px solid rgba(27,77,16,.18); border-radius: 999px; padding: .42rem .95rem; }
+.ab-card-tags li.ab-card-tags-label { font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--earth); background: transparent; border: 0; padding: 0 .15rem 0 0; margin-right: .15rem; }
 
 /* Carousel controls: Pfeile sitzen direkt links/rechts am Bild-Bereich */
 .ab-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-top: 1.5rem; }
@@ -1690,6 +1680,36 @@ ul { list-style: none; }
 /* Zurück-Button oben in Unterseiten (Anwendungsbereiche, Schwarzerde) */
 .sub-back { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--ff-body); font-size: .92rem; font-weight: 700; color: rgba(245,237,218,.78); text-decoration: none; padding: .55rem 1rem; border: 1px solid rgba(245,237,218,.22); border-radius: 999px; margin-bottom: 2rem; transition: background .25s, color .25s, border-color .25s; }
 .sub-back:hover { background: rgba(245,237,218,.08); color: var(--sand); border-color: var(--sand); }
+
+/* Floating-Zurück-Button: erscheint beim Scrollen (display-toggle, kein opacity-Fade) */
+.sub-back-fab {
+  position: fixed;
+  top: 5.2rem;
+  left: 1.25rem;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--ff-body);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--cream-text);
+  text-decoration: none;
+  padding: .65rem 1.1rem;
+  background: rgba(14,11,6,.78);
+  border: 1px solid rgba(245,237,218,.25);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(22,17,10,.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background .25s, color .25s, border-color .25s;
+}
+.sub-back-fab.is-visible { display: inline-flex; }
+.sub-back-fab:hover { background: var(--forest); color: var(--cream-text); border-color: var(--leaf); }
+.sub-back-fab:focus-visible { outline: 2px solid var(--leaf); outline-offset: 3px; }
+@media (max-width: 768px) {
+  .sub-back-fab { top: auto; bottom: 1.2rem; left: 1rem; right: 1rem; justify-content: center; padding: .75rem 1.2rem; font-size: .95rem; }
+}
 
 @media (max-width: 768px) {
   .ab-hero { padding: 6.5rem 0 3.5rem; }

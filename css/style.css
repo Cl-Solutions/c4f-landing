@@ -1417,7 +1417,9 @@ ul { list-style: none; }
 .pt { background: var(--cream); padding: 6.5rem 0 7rem; }
 .pt-head { max-width: 760px; margin-bottom: 3.2rem; }
 .pt-sub { font-size: 1.15rem; line-height: 1.65; color: #2a2218; margin-top: 1.2rem; }
-.pt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.pt-list { list-style: none; padding: 0; margin: .6rem 0 0; font-size: 1.05rem; line-height: 1.7; color: #2a2218; }
+.pt-list li { padding-left: .2rem; }
+.pt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .pt-card { background: #fff; border: 1px solid var(--cream-dark); border-radius: var(--radius); padding: 2.2rem 2rem 2.4rem; display: flex; flex-direction: column; transition: transform .35s var(--ease-out-quart), box-shadow .35s var(--ease-out-quart), border-color .35s; }
 .pt-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(22,17,10,.10); border-color: var(--sand); }
 .pt-card--link { text-decoration: none; color: inherit; }

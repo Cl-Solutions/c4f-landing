@@ -1415,13 +1415,11 @@ ul { list-style: none; }
 
 /* ── ③ PARTNER ────────────────────────────────────────────── */
 .pt { background: var(--cream); padding: 6.5rem 0 7rem; }
-.pt-head { max-width: 1000px; margin-bottom: 3.2rem; }
-.pt-sub { font-size: 1.18rem; line-height: 1.6; color: #2a2218; margin-top: 1.2rem; font-weight: 600; }
-.pt-list { list-style: none; padding: 0; margin: 1.1rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: .65rem 2.4rem; max-width: 820px; }
-.pt-list li { position: relative; padding-left: 1.5rem; font-size: 1.04rem; line-height: 1.5; color: #2a2218; }
-.pt-list li::before { content: ""; position: absolute; left: .15rem; top: .52em; width: .55rem; height: .55rem; border-radius: 50%; background: var(--leaf); }
-.pt-bridge { margin-top: 1.7rem; font-family: var(--ff-head); font-size: 1.3rem; font-weight: 700; letter-spacing: -.01em; color: var(--coal); }
-.pt-bridge::after { content: ""; display: block; width: 3rem; height: 3px; border-radius: 2px; background: var(--leaf); margin-top: .9rem; }
+.pt-head { max-width: 760px; margin-bottom: 3.2rem; }
+.pt-sub { font-size: 1.15rem; line-height: 1.65; color: #2a2218; margin-top: 1.2rem; }
+.pt-card-list { list-style: none; padding: 0; margin: 0 0 1.1rem; display: grid; gap: .5rem; }
+.pt-card-list li { position: relative; padding-left: 1.4rem; font-size: 1rem; line-height: 1.5; color: #4a4234; }
+.pt-card-list li::before { content: ""; position: absolute; left: .1rem; top: .5em; width: .5rem; height: .5rem; border-radius: 50%; background: var(--leaf); }
 .pt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .pt-card { background: #fff; border: 1px solid var(--cream-dark); border-radius: var(--radius); padding: 2.2rem 2rem 2.4rem; display: flex; flex-direction: column; transition: transform .35s var(--ease-out-quart), box-shadow .35s var(--ease-out-quart), border-color .35s; }
 .pt-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(22,17,10,.10); border-color: var(--sand); }
@@ -1507,7 +1505,6 @@ ul { list-style: none; }
   .pr-row { grid-template-columns: 1fr 1fr; }
   .pr-card--combo { grid-column: 1 / -1; }
   .pt-grid { grid-template-columns: 1fr; }
-  .pt-list { grid-template-columns: 1fr; gap: .55rem; }
   .pt-feature { grid-template-columns: 1fr; }
   .pt-feature-media { min-height: 0; aspect-ratio: 16 / 9; }
   .pt-feature-media img { position: static; }

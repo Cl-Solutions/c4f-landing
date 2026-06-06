@@ -364,9 +364,9 @@ ul { list-style: none; }
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(22,17,10,.75) 0%,
-    rgba(22,17,10,.60) 50%,
-    rgba(22,17,10,.30) 100%
+    rgba(22,17,10,.55) 0%,
+    rgba(22,17,10,.40) 50%,
+    rgba(22,17,10,.15) 100%
   );
 }
 

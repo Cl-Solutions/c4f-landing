@@ -325,15 +325,27 @@
       lb.innerHTML = '<img class="zg-lightbox-img" alt=""><button class="zg-lightbox-close" aria-label="Schließen">✕</button>';
       document.body.appendChild(lb);
       const lbImg = lb.querySelector('.zg-lightbox-img');
+      let scrollY = 0;
       const open = (src, alt) => {
         lbImg.src = src;
         lbImg.alt = alt;
         lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        // Scroll robust sperren (auch iOS): Body fixieren, Position merken.
+        scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
       };
       const close = () => {
         lb.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
       };
       targets.forEach((c) => {
         const img = c.querySelector('img');
@@ -367,12 +379,23 @@
       let idx = 0;
       total.textContent = slides.length;
 
+      const frame = root.querySelector('.ab-carousel-frame');
+
+      // Frame-Höhe an das aktive Bild anpassen (kein Leerraum, kein Beschnitt).
+      const updateFrameHeight = () => {
+        const active = slides[idx];
+        if (!frame || !active) return;
+        frame.style.height = active.offsetHeight + 'px';
+      };
+
       const go = (i) => {
         idx = (i + slides.length) % slides.length;
         slides.forEach((s, n) => s.classList.toggle('is-active', n === idx));
         dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
         current.textContent = idx + 1;
         track.style.transform = `translateX(-${idx * 100}%)`;
+        requestAnimationFrame(updateFrameHeight);
+        setTimeout(updateFrameHeight, 600);
       };
 
       prev.addEventListener('click', () => go(idx - 1));
@@ -394,7 +417,20 @@
         touchStart = null;
       });
 
+      // Frame-Höhe nachführen, wenn Bilder laden und bei Resize
+      slides.forEach((s) => {
+        const img = s.querySelector('img');
+        if (img && !img.complete) img.addEventListener('load', updateFrameHeight);
+      });
+      let resizeT;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeT);
+        resizeT = setTimeout(updateFrameHeight, 100);
+      });
+
       go(0);
+      requestAnimationFrame(updateFrameHeight);
+      setTimeout(updateFrameHeight, 800);
     })();
   </script>
 </body>

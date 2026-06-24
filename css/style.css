@@ -1655,7 +1655,8 @@ ul { list-style: none; }
 .ab-carousel-frame { overflow: hidden; border-radius: var(--radius); transition: height .55s var(--ease-out-quart); }
 .ab-carousel-track { display: flex; align-items: flex-start; transition: transform .55s var(--ease-out-quart); }
 .ab-slide { flex: 0 0 100%; min-width: 0; padding: 0 .25rem; display: flex; flex-direction: column; gap: 1.2rem; }
-.ab-card-h { font-family: var(--ff-head); font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 800; line-height: 1.25; letter-spacing: -.015em; color: var(--coal); margin: 0; max-width: 36ch; }
+/* Überschriften stehen bereits in den Infografiken – über dem Bild ausgeblendet */
+.ab-card-h { display: none; }
 .ab-card-img { margin: 0; background: #fff; border: 1px solid var(--cream-dark); border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 36px rgba(22,17,10,.10); position: relative; }
 .ab-card-img picture, .ab-card-img img { display: block; width: 100%; height: auto; }
 .ab-zoom-hint { position: absolute; right: .7rem; bottom: .7rem; display: inline-flex; align-items: center; gap: .25rem; font-family: var(--ff-body); font-size: .8rem; font-weight: 700; color: var(--cream-text); background: rgba(14,11,6,.78); border: 1px solid rgba(245,237,218,.22); border-radius: 999px; padding: .35rem .75rem; pointer-events: none; line-height: 1; }
@@ -1665,6 +1666,18 @@ ul { list-style: none; }
 .ab-card-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .ab-card-tags li { display: inline-flex; align-items: center; flex: 0 0 auto; font-size: .9rem; font-weight: 600; line-height: 1.3; color: var(--forest); background: rgba(27,77,16,.08); border: 1px solid rgba(27,77,16,.18); border-radius: 999px; padding: .42rem .95rem; }
 .ab-card-tags li.ab-card-tags-label { font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--earth); background: transparent; border: 0; padding: 0 .15rem 0 0; margin-right: .15rem; }
+
+/* Klickbare Streifen am linken/rechten Bildrand zum Blättern */
+.ab-edge { position: absolute; top: 0; bottom: 0; width: clamp(52px, 13%, 92px); display: flex; align-items: center; border: 0; margin: 0; padding: 0 .5rem; cursor: pointer; z-index: 4; -webkit-tap-highlight-color: transparent; transition: background .25s ease; }
+.ab-edge--prev { left: 0; justify-content: flex-start; background: linear-gradient(to right, rgba(14,11,6,.42), rgba(14,11,6,0)); }
+.ab-edge--next { right: 0; justify-content: flex-end; background: linear-gradient(to left, rgba(14,11,6,.42), rgba(14,11,6,0)); }
+.ab-edge--prev:hover { background: linear-gradient(to right, rgba(14,11,6,.6), rgba(14,11,6,0)); }
+.ab-edge--next:hover { background: linear-gradient(to left, rgba(14,11,6,.6), rgba(14,11,6,0)); }
+.ab-edge-ico { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--forest); box-shadow: 0 4px 14px rgba(22,17,10,.28); transition: transform .2s var(--ease-out-quart); }
+.ab-edge svg { width: 22px; height: 22px; }
+.ab-edge:hover .ab-edge-ico { transform: scale(1.1); }
+.ab-edge:focus-visible { outline: 2px solid var(--leaf); outline-offset: -4px; }
+.ab-zoom-hint { z-index: 5; }
 
 /* Carousel controls: Pfeile + Zähler in fester Leiste unter dem Bild */
 .ab-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }

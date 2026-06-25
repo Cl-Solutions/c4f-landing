@@ -209,16 +209,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!valid) return;
 
-      const btn = form.querySelector('.form-btn');
-      btn.textContent = 'Wird gesendet …';
-      btn.disabled = true;
+      // Übergangslösung bis zum Formular-Backend: Anfrage per E-Mail-Programm
+      // öffnen (mailto). Wird später auf echten Versand umgestellt.
+      const val = (sel) => (form.querySelector(sel)?.value || '').trim();
+      const interestSel = form.querySelector('#f-interest');
+      const interest = interestSel && interestSel.value
+        ? interestSel.options[interestSel.selectedIndex].text
+        : '';
 
-      setTimeout(() => {
-        form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach((f) => f.value = '');
-        formSuccess.hidden = false;
-        btn.hidden = true;
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 800);
+      const subject = 'Anfrage über die Website' + (interest ? ' – ' + interest : '');
+      const body = [
+        'Name: ' + val('#f-name'),
+        val('#f-org') ? 'Organisation: ' + val('#f-org') : null,
+        'E-Mail: ' + val('#f-email'),
+        val('#f-phone') ? 'Telefon: ' + val('#f-phone') : null,
+        interest ? 'Interesse: ' + interest : null,
+        '',
+        'Nachricht:',
+        val('#f-msg')
+      ].filter((l) => l !== null).join('\n');
+
+      window.location.href = 'mailto:ulshoefer@c4f.bio'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      formSuccess.hidden = false;
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 

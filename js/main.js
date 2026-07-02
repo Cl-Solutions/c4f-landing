@@ -9,13 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = (window.scrollY / max * 100).toFixed(1) + '%';
+    progressBar.style.transform = `scaleX(${Math.min(window.scrollY / max, 1).toFixed(3)})`;
   }, { passive: true });
 
   // ─── SCROLL REVEAL ────────────────────────────────────────
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
+        // Tab im Hintergrund/Headless: Transitions laufen nicht an → sofort zeigen
+        if (document.hidden) e.target.style.transition = 'none';
         e.target.classList.add('is-visible');
         revealObserver.unobserve(e.target);
       }
@@ -181,33 +183,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nameField  = form.querySelector('#f-name');
       const emailField = form.querySelector('#f-email');
-      let valid = true;
 
-      [nameField, emailField].forEach((field) => {
-        field.style.borderColor = '';
-        field.classList.remove('field-shake');
-      });
-
-      [nameField, emailField].forEach((field) => {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#e07070';
-          valid = false;
-          // Trigger shake animation
+      // Fehler zeigen: Textmeldung + aria-invalid (für Screenreader) + Shake
+      const setError = (field, hasError) => {
+        const msg = document.getElementById(field.id + '-error');
+        field.setAttribute('aria-invalid', String(hasError));
+        if (msg) msg.hidden = !hasError;
+        if (hasError) {
           void field.offsetWidth; // force reflow to restart animation
           field.classList.add('field-shake');
           field.addEventListener('animationend', () => field.classList.remove('field-shake'), { once: true });
         }
+      };
+
+      [nameField, emailField].forEach((field) => {
+        field.classList.remove('field-shake');
+        setError(field, false);
       });
 
-      if (emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-        emailField.style.borderColor = '#e07070';
-        valid = false;
-        void emailField.offsetWidth;
-        emailField.classList.add('field-shake');
-        emailField.addEventListener('animationend', () => emailField.classList.remove('field-shake'), { once: true });
-      }
+      const invalid = [];
+      if (!nameField.value.trim()) invalid.push(nameField);
+      if (!emailField.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) invalid.push(emailField);
+      invalid.forEach((field) => setError(field, true));
 
-      if (!valid) return;
+      if (invalid.length) { invalid[0].focus(); return; }
 
       // Übergangslösung bis zum Formular-Backend: Anfrage per E-Mail-Programm
       // öffnen (mailto). Wird später auf echten Versand umgestellt.

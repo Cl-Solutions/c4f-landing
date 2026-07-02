@@ -4,7 +4,7 @@
     {
       "name": "c4f-landing",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "4321", "/Users/berkayaksoy/Desktop/c4f-landing"],
+      "runtimeArgs": ["serve", "-p", "4321", "/Users/berkayaksoy/Projects/c4f-landing"],
       "port": 4321
     }
   ]
